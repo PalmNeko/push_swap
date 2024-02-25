@@ -19,6 +19,8 @@ static int	print_error(void);
 
 int main(int argc, char *argv[])
 {
+	if (argc == 1)
+		return (0);
 	if (validate_argument(argc, argv))
 		return (print_error());
 }
@@ -32,6 +34,7 @@ static bool	validate_argument(int argc, char *argv[])
 	{
 		if (is_valid_num(argv[index]))
 			return (false);
+		index++;
 	}
 	return (true);
 }
