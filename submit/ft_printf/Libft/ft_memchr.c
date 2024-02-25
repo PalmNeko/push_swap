@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 18:41:03 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/16 18:42:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/29 15:35:21 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/20 15:29:05 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <stdint.h>
+#include <stddef.h>
 
-char	*ft_strndup(const char *s1, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*copy;
-	size_t	length;
+	unsigned char	*sp;
+	unsigned char	value;
+	size_t			index;
 
-	copy = NULL;
-	length = ft_strlen(s1);
-	if (length > n)
-		length = n;
-	if (length < SIZE_MAX)
-		copy = (char *)malloc(sizeof(char) * (length + 1));
-	if (copy == NULL)
-		return (NULL);
-	ft_strlcpy(copy, s1, length + 1);
-	return (copy);
+	sp = (unsigned char *)s;
+	value = (unsigned char)c;
+	index = 0;
+	while (index < n)
+	{
+		if (sp[index] == value)
+			return (sp + index);
+		index++;
+	}
+	return (NULL);
 }

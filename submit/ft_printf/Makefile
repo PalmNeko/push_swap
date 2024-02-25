@@ -89,13 +89,10 @@ all: $(NAME)
 
 # make files
 $(NAME): $(LIBFT) $(OBJS)
-	$(RM) $(NAME)
-	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(filter %.o, $^)
 
 $(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
 	$(RM) $(NAME)
-	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(filter %.o, $^)
 	date > bonus
 

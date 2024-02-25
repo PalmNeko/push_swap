@@ -57,9 +57,6 @@ int	print_decimal_fd_with_cs(int fd, t_cs *cs, int value)
 
 static char	*add_sign_with_cs(t_cs *cs, char *num_str)
 {
-	char	*joined_str;
-
-	joined_str = NULL;
 	if (num_str[0] == '-')
 		return (ft_strdup(num_str));
 	else if (cs->flag_plus != false)

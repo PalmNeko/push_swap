@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 18:41:03 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/16 18:42:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/08 16:58:09 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/11/09 15:22:06 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <stdint.h>
+#include <unistd.h>
 
-char	*ft_strndup(const char *s1, size_t n)
+ssize_t	ft_putchar_fd(char c, int fd)
 {
-	char	*copy;
-	size_t	length;
-
-	copy = NULL;
-	length = ft_strlen(s1);
-	if (length > n)
-		length = n;
-	if (length < SIZE_MAX)
-		copy = (char *)malloc(sizeof(char) * (length + 1));
-	if (copy == NULL)
-		return (NULL);
-	ft_strlcpy(copy, s1, length + 1);
-	return (copy);
+	return (write(fd, &c, 1));
 }

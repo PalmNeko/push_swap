@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 12:20:43 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/20 15:33:12 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/27 18:12:37 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/16 16:47:38 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
-#include <errno.h>
-#include <stdint.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*ptr;
-	size_t			malloc_size;
+	char		*dst_p;
+	const char	*src_p;
 
-	if (size > 0 && count > SIZE_MAX / size)
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	dst_p = dst;
+	src_p = src;
+	if (dst_p < src_p)
+		return (ft_memcpy(dst_p, src_p, len));
+	while (len > 0)
 	{
-		errno = ENOMEM;
-		return (NULL);
+		dst_p[len - 1] = src_p[len - 1];
+		len--;
 	}
-	malloc_size = count * size;
-	ptr = (unsigned char *)malloc(sizeof(unsigned char) * malloc_size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, malloc_size);
-	return (ptr);
+	return (dst);
 }

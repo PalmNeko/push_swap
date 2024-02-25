@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprint_percent_cs.c                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 23:18:58 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/02/11 14:37:20 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/28 19:36:42 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/10 15:38:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include <stdarg.h>
-#include "conversion_specification.h"
-#include "libft.h"
-#include "_ft_vdprint_cs.h"
 
-int	ft_vdprint_percent_cs(int fd, t_cs *cs, va_list args)
+char	*ft_strchr(const char *s, int c)
 {
-	int				print_len;
+	const char	cmp_c = c;
 
-	(void)args;
-	print_len = print_char_fd_with_cs(fd, cs, '%');
-	return (print_len);
+	while (*s != '\0')
+	{
+		if (*s == cmp_c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == cmp_c)
+		return ((char *)s);
+	return (NULL);
 }

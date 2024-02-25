@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 18:41:03 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/16 18:42:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/08 17:56:59 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/08 18:14:55 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <stdint.h>
+#include <unistd.h>
 
-char	*ft_strndup(const char *s1, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*copy;
-	size_t	length;
+	char	buf[10];
+	int		size;
+	int		index;
 
-	copy = NULL;
-	length = ft_strlen(s1);
-	if (length > n)
-		length = n;
-	if (length < SIZE_MAX)
-		copy = (char *)malloc(sizeof(char) * (length + 1));
-	if (copy == NULL)
-		return (NULL);
-	ft_strlcpy(copy, s1, length + 1);
-	return (copy);
+	if (n < 0)
+		write(fd, "-", 1);
+	else if (n > 0)
+		n *= -1;
+	else if (n == 0)
+		write(fd, "0", 1);
+	size = sizeof(buf) / sizeof(buf[0]);
+	index = size - 1;
+	while (n != 0)
+	{
+		buf[index] = '0' + (-1 * (n % 10));
+		n /= 10;
+		index--;
+	}
+	index += 1;
+	write(fd, buf + index, size - index);
+	return ;
 }

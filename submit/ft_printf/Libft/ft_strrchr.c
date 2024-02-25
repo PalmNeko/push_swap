@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 12:20:43 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/20 15:33:12 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/28 19:59:47 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/16 16:06:13 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
-#include <errno.h>
-#include <stdint.h>
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char	*ptr;
-	size_t			malloc_size;
+	size_t		index;
+	const char	cmp_c = c;
 
-	if (size > 0 && count > SIZE_MAX / size)
+	index = ft_strlen(s);
+	while (index > 0)
 	{
-		errno = ENOMEM;
-		return (NULL);
+		if (s[index] == cmp_c)
+			return ((char *)(s + index));
+		index--;
 	}
-	malloc_size = count * size;
-	ptr = (unsigned char *)malloc(sizeof(unsigned char) * malloc_size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, malloc_size);
-	return (ptr);
+	if (s[index] == cmp_c)
+		return ((char *)(s + index));
+	return (NULL);
 }

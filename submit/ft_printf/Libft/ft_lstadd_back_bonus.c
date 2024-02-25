@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprint_percent_cs.c                            :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 23:18:58 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/02/11 14:37:20 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/08 19:12:42 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/09 16:49:01 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdarg.h>
-#include "conversion_specification.h"
 #include "libft.h"
-#include "_ft_vdprint_cs.h"
 
-int	ft_vdprint_percent_cs(int fd, t_cs *cs, va_list args)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int				print_len;
+	t_list	*last_list;
 
-	(void)args;
-	print_len = print_char_fd_with_cs(fd, cs, '%');
-	return (print_len);
+	last_list = ft_lstlast(*lst);
+	if (last_list == NULL)
+		*lst = new;
+	else
+		last_list->next = new;
+	return ;
 }

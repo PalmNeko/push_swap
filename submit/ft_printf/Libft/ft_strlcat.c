@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprint_percent_cs.c                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 23:18:58 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/02/11 14:37:20 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/28 16:55:28 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/16 18:30:16 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdarg.h>
-#include "conversion_specification.h"
 #include "libft.h"
-#include "_ft_vdprint_cs.h"
+#include <stddef.h>
 
-int	ft_vdprint_percent_cs(int fd, t_cs *cs, va_list args)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int				print_len;
+	size_t	dst_len;
+	size_t	src_len;
 
-	(void)args;
-	print_len = print_char_fd_with_cs(fd, cs, '%');
-	return (print_len);
+	dst_len = ft_strnlen(dst, dstsize);
+	src_len = ft_strlcpy(dst + dst_len, src, dstsize - dst_len);
+	return (dst_len + src_len);
 }

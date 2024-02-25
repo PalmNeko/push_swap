@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprint_percent_cs.c                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 23:18:58 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/02/11 14:37:20 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/27 15:52:53 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/20 15:28:25 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include <stdarg.h>
-#include "conversion_specification.h"
-#include "libft.h"
-#include "_ft_vdprint_cs.h"
 
-int	ft_vdprint_percent_cs(int fd, t_cs *cs, va_list args)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int				print_len;
+	unsigned char	*bp;
+	unsigned char	value;
+	size_t			set_count;
 
-	(void)args;
-	print_len = print_char_fd_with_cs(fd, cs, '%');
-	return (print_len);
+	bp = b;
+	value = c;
+	set_count = 0;
+	while (set_count < len)
+	{
+		bp[set_count] = value;
+		set_count++;
+	}
+	return (b);
 }

@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 12:20:43 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/20 15:33:12 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/27 19:14:40 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/10 15:48:50 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
-#include <errno.h>
-#include <stdint.h>
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned char	*ptr;
-	size_t			malloc_size;
+	size_t	char_count;
+	size_t	length;
 
-	if (size > 0 && count > SIZE_MAX / size)
+	length = ft_strlen(src);
+	if (length == 0 && dstsize == 0)
+		return (0);
+	char_count = 0;
+	while (src[char_count] != '\0' && char_count + 1 < dstsize)
 	{
-		errno = ENOMEM;
-		return (NULL);
+		dst[char_count] = src[char_count];
+		char_count++;
 	}
-	malloc_size = count * size;
-	ptr = (unsigned char *)malloc(sizeof(unsigned char) * malloc_size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, malloc_size);
-	return (ptr);
+	if (dstsize > 0)
+		dst[char_count] = '\0';
+	return (length);
 }

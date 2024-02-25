@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprint_percent_cs.c                            :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 23:18:58 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/02/11 14:37:20 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/16 18:29:07 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/16 18:33:09 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include <stdarg.h>
-#include "conversion_specification.h"
-#include "libft.h"
-#include "_ft_vdprint_cs.h"
 
-int	ft_vdprint_percent_cs(int fd, t_cs *cs, va_list args)
+size_t	ft_strnlen(const char *s, size_t maxlen)
 {
-	int				print_len;
+	size_t	len;
 
-	(void)args;
-	print_len = print_char_fd_with_cs(fd, cs, '%');
-	return (print_len);
+	len = 0;
+	while (s[len] != '\0' && len < maxlen)
+		len++;
+	return (len);
 }

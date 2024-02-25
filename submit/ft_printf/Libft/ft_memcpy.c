@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 18:41:03 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/16 18:42:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/27 17:26:53 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/16 16:30:38 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <stdint.h>
+#include <stddef.h>
 
-char	*ft_strndup(const char *s1, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*copy;
-	size_t	length;
+	size_t		copy_count;
+	char		*dst_p;
+	const char	*src_p;
 
-	copy = NULL;
-	length = ft_strlen(s1);
-	if (length > n)
-		length = n;
-	if (length < SIZE_MAX)
-		copy = (char *)malloc(sizeof(char) * (length + 1));
-	if (copy == NULL)
-		return (NULL);
-	ft_strlcpy(copy, s1, length + 1);
-	return (copy);
+	if (dst == NULL && src == NULL)
+		return (dst);
+	dst_p = dst;
+	src_p = src;
+	copy_count = 0;
+	while (copy_count < n)
+	{
+		dst_p[copy_count] = src_p[copy_count];
+		copy_count++;
+	}
+	return (dst);
 }

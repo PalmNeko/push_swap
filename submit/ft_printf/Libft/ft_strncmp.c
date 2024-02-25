@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 18:41:03 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/16 18:42:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/29 14:44:40 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/20 15:24:57 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <stdint.h>
+#include <stddef.h>
 
-char	*ft_strndup(const char *s1, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*copy;
-	size_t	length;
+	size_t	count;
 
-	copy = NULL;
-	length = ft_strlen(s1);
-	if (length > n)
-		length = n;
-	if (length < SIZE_MAX)
-		copy = (char *)malloc(sizeof(char) * (length + 1));
-	if (copy == NULL)
-		return (NULL);
-	ft_strlcpy(copy, s1, length + 1);
-	return (copy);
+	count = 0;
+	while (count < n)
+	{
+		if (s1[count] == '\0' && s2[count] == '\0')
+			return (0);
+		else if (s1[count] != s2[count])
+			return (((unsigned char)s1[count] - (unsigned char)s2[count]));
+		count++;
+	}
+	return (0);
 }

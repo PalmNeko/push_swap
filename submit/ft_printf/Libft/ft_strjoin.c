@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 12:20:43 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/20 15:33:12 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/06 14:10:32 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/11 16:50:05 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
-#include <errno.h>
-#include <stdint.h>
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	unsigned char	*ptr;
-	size_t			malloc_size;
+	size_t	count;
+	char	*joined;
 
-	if (size > 0 && count > SIZE_MAX / size)
-	{
-		errno = ENOMEM;
+	count = ft_strlen(s1) + ft_strlen(s2) + 1;
+	joined = (char *)malloc(sizeof(char) * count);
+	if (joined == NULL)
 		return (NULL);
-	}
-	malloc_size = count * size;
-	ptr = (unsigned char *)malloc(sizeof(unsigned char) * malloc_size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, malloc_size);
-	return (ptr);
+	ft_strlcpy(joined, s1, count);
+	ft_strlcat(joined, s2, count);
+	return (joined);
 }

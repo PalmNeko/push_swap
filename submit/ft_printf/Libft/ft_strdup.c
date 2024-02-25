@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 12:20:43 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/20 15:33:12 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/09/30 15:18:15 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/16 18:10:57 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stddef.h>
 #include <limits.h>
-#include <errno.h>
+#include <stddef.h>
 #include <stdint.h>
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strdup(const char *s1)
 {
-	unsigned char	*ptr;
-	size_t			malloc_size;
+	char	*copy;
+	size_t	length;
+	size_t	size;
 
-	if (size > 0 && count > SIZE_MAX / size)
-	{
-		errno = ENOMEM;
+	copy = NULL;
+	length = ft_strlen(s1);
+	if (length == SIZE_MAX)
 		return (NULL);
-	}
-	malloc_size = count * size;
-	ptr = (unsigned char *)malloc(sizeof(unsigned char) * malloc_size);
-	if (ptr == NULL)
+	size = length + 1;
+	copy = (char *)malloc(sizeof(char) * size);
+	if (copy == NULL)
 		return (NULL);
-	ft_bzero(ptr, malloc_size);
-	return (ptr);
+	ft_strlcpy(copy, s1, size);
+	return (copy);
 }

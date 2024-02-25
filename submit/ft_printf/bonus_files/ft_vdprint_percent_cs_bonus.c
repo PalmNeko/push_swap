@@ -20,7 +20,7 @@ int	ft_vdprint_percent_cs(int fd, t_cs *cs, va_list args)
 {
 	int				print_len;
 
-	args = 0;
+	(void)args;
 	print_len = print_char_fd_with_cs(fd, cs, '%');
 	return (print_len);
 }

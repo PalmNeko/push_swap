@@ -16,20 +16,18 @@
 
 int	check_conv_specification_format(const char *cs_format)
 {
-	int	tmp;
-
 	if (*cs_format != '%')
 		return (0);
 	while (is_flags(*cs_format))
 		cs_format++;
-	tmp = ft_atoi(cs_format);
+	ft_atoi(cs_format);
 	if (errno == ERANGE)
 		return (0);
 	while (ft_isdigit(*cs_format))
 		cs_format++;
 	if (*cs_format == '.')
 		cs_format++;
-	tmp = ft_atoi(cs_format);
+	ft_atoi(cs_format);
 	if (errno == ERANGE)
 		return (0);
 	while (ft_isdigit(*cs_format))
