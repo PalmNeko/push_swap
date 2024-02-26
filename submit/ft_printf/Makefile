@@ -95,6 +95,7 @@ $(NAME): $(LIBFT) $(OBJS)
 
 $(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
 	$(RM) $(NAME)
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(filter %.o, $^)
 	date > bonus
 
@@ -148,7 +149,7 @@ fclean: clean
 	$(RM) test
 
 test: $(NAME) main.c
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) main.c -L. -l ftprintf -o $@
 
 check: test
 	./test printf | cat -e > printf.log
