@@ -14,11 +14,18 @@ NAME = push_swap
 CC = cc
 CFLAGS += -Wall -Werror -Wextra -MP -MMD
 SRC = \
-	main.c
+	main.c \
+	Stack/create.c \
+	Stack/destroy.c \
+	Stack/instructions.c
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
-CFLAGS += $(addprefix -I, Libft ft_printf)
+CFLAGS += $(addprefix -I, \
+	Libft \
+	ft_printf \
+	Stack \
+)
 
 all: $(NAME)
 
@@ -26,7 +33,7 @@ include .install.mk
 -include $(DEPENDS)
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $(filter %.o, $^) -L./Libft -l ft -L./ft_printf -l ftprintf
 
 $(LIBFT): Libft
 	$(MAKE) --directory Libft
@@ -46,5 +53,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) --directory ft_printf fclean
+	$(MAKE) --directory Libft fclean
 
 re: fclean all
