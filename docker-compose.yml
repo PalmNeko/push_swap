@@ -8,4 +8,6 @@ services:
         source: ./submit
         target: /app
     tty: true
-    command: "/bin/bash"
+    init: true
+    command: "cat"
+
