@@ -41,5 +41,6 @@ typedef struct s_stack {
 
 t_stack *create_stack(int max_len);
 void	destroy_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
 
 #endif

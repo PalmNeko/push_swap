@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validators.h                                       :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/15 00:47:11 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/15 00:47:11 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/03/15 01:21:53 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/03/15 01:21:53 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATOR_H
-# define VALiDATOR_H
+#include "stack.h"
+#include "ft_printf.h"
+#include "libft.h"
 
-#include <stddef.h>
-#include <stdbool.h>
+void	print_stack(t_stack *stack)
+{
+	int		index;
 
-bool	validate_not_duplicated(int *values, size_t len);
-bool	validate_numstrings(char *strs[], int len);
-
-#endif
+	index = stack->len - 1;
+	ft_putstr_fd("top\n", 1);
+	while (index >= 0)
+	{
+		ft_printf("%d\n", stack->stack[index]);
+		index--;
+	}
+}

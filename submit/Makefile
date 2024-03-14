@@ -16,8 +16,10 @@ SRC = \
 	main.c \
 	Stack/create.c \
 	Stack/destroy.c \
+	Stack/print.c \
 	Stack/instructions.c \
-	validators/validate_not_duplicated.c
+	validators/validate_not_duplicated.c \
+	validators/validate_numstrings.c
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
