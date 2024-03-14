@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATOR_H
-# define VALiDATOR_H
+#ifndef VALIDATORS_H
+# define VALIDATORS_H
 
-#include <stddef.h>
-#include <stdbool.h>
+# include <stddef.h>
+# include <stdbool.h>
 
 bool	validate_not_duplicated(int *values, size_t len);
 bool	validate_numstrings(char *strs[], int len);

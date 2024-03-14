@@ -17,10 +17,10 @@
 #include "ft_printf.h"
 #include "validators.h"
 
-static int	print_error(void);
+static int		print_error(void);
 static t_stack	*generate_stack_strs_to(char *strs[], int len);
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_stack	*input_stack;
 
@@ -42,8 +42,8 @@ static int	print_error(void)
 
 static t_stack	*generate_stack_strs_to(char *strs[], int len)
 {
-	int	index;
-	int	value;
+	int		index;
+	int		value;
 	t_stack	*stack;
 
 	if (validate_numstrings(strs, len) == false)
@@ -56,17 +56,11 @@ static t_stack	*generate_stack_strs_to(char *strs[], int len)
 	{
 		value = ft_atoi(strs[index]);
 		if (errno != 0)
-		{
-			destroy_stack(stack);
-			return (NULL);
-		}
+			return (destroy_stack(stack), NULL);
 		stack->push(stack, value);
 		index--;
 	}
 	if (validate_not_duplicated(stack->stack, stack->len) == false)
-	{
-		destroy_stack(stack);
-		return (NULL);
-	}
+		return (destroy_stack(stack), NULL);
 	return (stack);
 }

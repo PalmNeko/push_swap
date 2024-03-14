@@ -18,7 +18,7 @@
 #include <string.h>
 #include <stdio.h>
 
-t_stack *create_stack(int max_len)
+t_stack	*create_stack(int max_len)
 {
 	t_stack	*stack;
 
