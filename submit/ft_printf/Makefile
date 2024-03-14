@@ -100,7 +100,7 @@ $(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
 	date > bonus
 
 $(LIBFT):
-	$(MAKE) --directory Libft
+	"$(MAKE)" --directory Libft
 
 update_bonus:
 	mkdir -p bonus_files
@@ -133,7 +133,7 @@ update_bonus:
 	done
 
 clean:
-	$(MAKE) --directory Libft clean
+	"$(MAKE)" --directory Libft clean
 	$(RM) $(OBJS) $(DEPENDS)
 	$(RM) $(OBJS_BONUS) $(DEPENDS_BONUS)
 	$(RM) *.bak
@@ -143,7 +143,7 @@ clean:
 	$(RM) main.d test.d
 
 fclean: clean
-	$(MAKE) --directory Libft fclean
+	"$(MAKE)" --directory Libft fclean
 	$(RM) $(NAME)
 	$(RM) $(NAME_BONUS)
 	$(RM) test
