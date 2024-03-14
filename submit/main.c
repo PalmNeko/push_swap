@@ -15,6 +15,7 @@
 #include "stack.h"
 #include "errno.h"
 #include "ft_printf.h"
+#include "validators.h"
 
 static bool	validate_argument(int argc, char *argv[]);
 static bool	is_valid_num(char *str);
@@ -40,6 +41,7 @@ int main(int argc, char *argv[])
 		ft_printf("%d\n", input_stack->stack[index]);
 		index--;
 	}
+	destroy_stack(input_stack);
 	return (0);
 }
 
@@ -94,6 +96,11 @@ static t_stack	*generate_stack_strs_to(char *strs[], int len)
 		}
 		stack->push(stack, value);
 		index--;
+	}
+	if (validate_not_duplicated(stack->stack, stack->len) == false)
+	{
+		destroy_stack(stack);
+		return (NULL);
 	}
 	return (stack);
 }

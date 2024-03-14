@@ -12,20 +12,19 @@
 
 NAME = push_swap
 CC = cc
-CFLAGS += -Wall -Werror -Wextra -MP -MMD
 SRC = \
 	main.c \
 	Stack/create.c \
 	Stack/destroy.c \
-	Stack/instructions.c
+	Stack/instructions.c \
+	validators/validate_not_duplicated.c
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
-CFLAGS += $(addprefix -I, \
-	Libft \
-	ft_printf \
-	Stack \
-)
+CFLAGS += -Wall -Werror -Wextra -MP -MMD
+INCS = -I./validators -I./Libft -I./ft_printf -I./Stack
+CFLAGS += $(INCS)
+LIBS += -L./Libft -l ft -L./ft_printf -l ftprintf
 
 all: $(NAME)
 
@@ -33,14 +32,14 @@ include .install.mk
 -include $(DEPENDS)
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) -o $@ $(filter %.o, $^) -L./Libft -l ft -L./ft_printf -l ftprintf
+	$(CC) $(CFLAGS) -o $@ $(filter %.o, $^) $(LIBS)
 
 $(LIBFT): Libft
-	$(MAKE) --directory Libft
+	"$(MAKE)" --directory Libft
 	cp Libft/$(LIBFT) ./$(LIBFT)
 
 $(LIBFTPRINTF): ft_printf
-	$(MAKE) --directory ft_printf
+	"$(MAKE)" --directory ft_printf
 	cp ft_printf/$(LIBFTPRINTF) ./$(LIBFTPRINTF)
 
 clean:
