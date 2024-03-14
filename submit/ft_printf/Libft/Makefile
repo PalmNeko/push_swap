@@ -66,7 +66,10 @@ MY_SRC = \
 	ft_isupper.c \
 	ft_islower.c \
 	ft_strtol.c \
-	ft_ultoa_base_str.c
+	ft_ultoa_base_str.c \
+	ft_ltoa_inplace.c \
+	ft_memswap.c \
+	ft_selection_sort.c
 
 BONUS = \
 	ft_lstnew_bonus.c \
@@ -98,9 +101,6 @@ $(NAME): $(OBJS)
 $(BONUS_RULE): $(BONUS_OBJS)
 	ar rcs $(NAME) $?
 	echo date > $(BONUS_RULE)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $^
 
 clean:
 	$(RM) $(CLEAN_FILES)
