@@ -60,7 +60,7 @@ static t_stack	*generate_stack_strs_to(char *strs[], int len)
 		stack->push(stack, value);
 		index--;
 	}
-	if (validate_not_duplicated(stack->stack, stack->len) == false)
+	if (validate_no_duplicates(stack->stack, stack->len) == false)
 		return (destroy_stack(stack), NULL);
 	return (stack);
 }

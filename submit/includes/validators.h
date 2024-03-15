@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdbool.h>
 
-bool	validate_not_duplicated(int *values, size_t len);
+bool	validate_no_duplicates(int *values, size_t len);
 bool	validate_numstrings(char *strs[], int len);
 
 #endif

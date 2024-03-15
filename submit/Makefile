@@ -19,7 +19,7 @@ SRC = \
 	Stack/print.c \
 	Stack/instructions.c \
 	Stack/clone.c \
-	validators/validate_not_duplicated.c \
+	validators/validate_no_duplicates.c \
 	validators/validate_numstrings.c
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a

@@ -26,7 +26,7 @@ static int	cmp_int_asc(const void *v1, const void *v2)
  * @return false if length == 0 or duplicates.
  * true if no duplicates.
  */
-bool	validate_not_duplicated(int *values, size_t len)
+bool	validate_no_duplicates(int *values, size_t len)
 {
 	int		*copy_values;
 	size_t	index;
