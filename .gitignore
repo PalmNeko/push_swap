@@ -1,0 +1,16 @@
+
+# Windows
+
+*.exe
+
+# Unix
+
+*.out
+
+# Lang C
+
+*.o
+*.d
+*.a
+*.gcno
+*.gcda
