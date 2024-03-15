@@ -26,16 +26,17 @@
  * @param shift_down same reverse_rotate
  */
 typedef struct s_stack {
-	int		*stack;
-	int		max_len;
-	int		len;
-	void	(*push)(struct s_stack *self, int value);
-	void	(*swap)(struct s_stack *self);
-	int		(*pop)(struct s_stack *self);
-	void	(*rotate)(struct s_stack *self);
-	void	(*shift_up)(struct s_stack *self);
-	void	(*reverse_rotate)(struct s_stack *self);
-	void	(*shift_down)(struct s_stack *self);
+	int				*stack;
+	int				max_len;
+	int				len;
+	void			(*push)(struct s_stack *self, int value);
+	void			(*swap)(struct s_stack *self);
+	int				(*pop)(struct s_stack *self);
+	void			(*rotate)(struct s_stack *self);
+	void			(*shift_up)(struct s_stack *self);
+	void			(*reverse_rotate)(struct s_stack *self);
+	void			(*shift_down)(struct s_stack *self);
+	struct s_stack	*(*clone)(struct s_stack *self);
 }	t_stack;
 
 t_stack	*create_stack(int max_len);
