@@ -19,6 +19,13 @@ static int	cmp_int_asc(const void *v1, const void *v2)
 	return (*(int *)v1 - *(int *)v2);
 }
 
+/**
+ * @brief validate no duplicates.
+ * @param values number array.
+ * @param len values array length.
+ * @return false if length == 0 or duplicates.
+ * true if no duplicates.
+ */
 bool	validate_not_duplicated(int *values, size_t len)
 {
 	int		*copy_values;

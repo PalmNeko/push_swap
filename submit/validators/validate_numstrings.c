@@ -15,6 +15,13 @@
 
 static bool	is_valid_num(char *str);
 
+/**
+ * @brief validate 'strs' are number format.
+ * @param strs - string array.
+ * @param len - strs array length.
+ * @return false if len == 0 or included string not number format.
+ * true if all strings is number format.
+ */
 bool	validate_numstrings(char *strs[], int len)
 {
 	int	index;
