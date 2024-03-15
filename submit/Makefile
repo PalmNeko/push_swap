@@ -18,13 +18,14 @@ SRC = \
 	Stack/destroy.c \
 	Stack/print.c \
 	Stack/instructions.c \
+	Stack/clone.c \
 	validators/validate_not_duplicated.c \
 	validators/validate_numstrings.c
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
 CFLAGS += -Wall -Werror -Wextra -MP -MMD
-INCS = -I./validators -I./Libft -I./ft_printf -I./Stack
+INCS = -I./includes -I./Libft -I./ft_printf
 CFLAGS += $(INCS)
 LIBS += -L./Libft -l ft -L./ft_printf -l ftprintf
 
@@ -45,12 +46,9 @@ $(LIBFTPRINTF): ft_printf
 	cp ft_printf/$(LIBFTPRINTF) ./$(LIBFTPRINTF)
 
 clean:
-	$(RM) \
-		$(OBJS) \
-		$(LIBFT) \
-		$(LIBFTPRINTF)
-	$(MAKE) --directory ft_printf clean
-	$(MAKE) --directory Libft clean
+	find . -name "*.d" -delete
+	find . -name "*.o" -delete
+	find . -name "*.gcno" -delete
 
 fclean: clean
 	$(RM) $(NAME)

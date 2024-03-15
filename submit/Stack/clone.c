@@ -12,6 +12,7 @@
 
 #include "stack.h"
 #include "libft.h"
+#include <stddef.h>
 
 struct s_stack	*_stack_clone(struct s_stack *self)
 {

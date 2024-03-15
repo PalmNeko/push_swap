@@ -4,5 +4,6 @@
 *.out
 *.exe
 *.a
+*.gcno
 
 push_swap
