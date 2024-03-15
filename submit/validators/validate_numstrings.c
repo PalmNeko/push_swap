@@ -38,6 +38,10 @@ bool	validate_numstrings(char *strs[], int len)
 
 static bool	is_valid_num(char *str)
 {
+	if (ft_strncmp(str, "0", 2) == 0)
+		return (true);
+	if (*str == '-')
+		str++;
 	if (*str < '1' || *str > '9')
 		return (false);
 	while (*str != '\0' && ft_isdigit(*str))
