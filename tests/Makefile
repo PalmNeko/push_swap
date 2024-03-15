@@ -13,3 +13,7 @@
 
 include tester.mk
 include install.mk
+
+.PHONY: test
+test: $(NAME)
+	$(NAME)

@@ -16,12 +16,14 @@ ifeq ($(OS),Windows_NT)
 endif
 TARGET_DIR = ../submit
 SRC = $(shell find $(TARGET_DIR) -name "*.c" -not -name "main.c" -not -path "*/Libft/*" -not -path "*/ft_printf/*")
+SRC += $(shell find . -name "*_test.c")
 OBJS = $(SRC:.c=.o)
 DEPENDS = $(SRC:.c=.d)
 CC = cc
 CFLAGS += -Wall -Werror -Wextra
 CFLAGS += -coverage
 INCS = -I$(TARGET_DIR)/includes -I$(TARGET_DIR)/Libft -I$(TARGET_DIR)/ft_printf
+INCS += -I./includes/tyctest
 CFLAGS += $(INCS)
 LIBS = -L./libs -L$(TARGET_DIR)/Libft -L$(TARGET_DIR)/ft_printf -ltyctest_main -ltyctest -lftprintf -lft
 
@@ -38,6 +40,8 @@ clean:
 	find .. -name "*.o" -delete
 	find .. -name "*.d" -delete
 	find .. -name "*.gcno" -delete
+	find .. -name "*.gcda" -delete
+	find .. -name "*.gcov" -delete
 
 .PHONY: fclean
 fclean: clean
