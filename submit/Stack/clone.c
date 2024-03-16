@@ -21,7 +21,7 @@ struct s_stack	*_stack_clone(struct s_stack *self)
 	deep_copy = create_stack(self->max_len);
 	if (deep_copy == NULL)
 		return (NULL);
-	ft_memcpy(deep_copy->stack, self->stack, self->len);
+	ft_memcpy(deep_copy->stack, self->stack, sizeof(int) * self->len);
 	deep_copy->len = self->len;
 	return (deep_copy);
 }
