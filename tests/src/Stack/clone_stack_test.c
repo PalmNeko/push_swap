@@ -31,4 +31,6 @@ TEST(clone_stack, basic)
 	EXPECT_EQ(stack->reverse_rotate, cloned->reverse_rotate);
 	EXPECT_EQ(stack->shift_down, cloned->shift_down);
 	EXPECT_EQ(stack->clone, cloned->clone);
+	destroy_stack(stack);
+	destroy_stack(cloned);
 }
