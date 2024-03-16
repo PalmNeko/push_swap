@@ -40,6 +40,8 @@ int	_stack_pop(struct s_stack *self)
 {
 	const int	top_index = self->len - 1;
 
+	if (self->len > 0)
+		self->len -= 1;
 	return (self->stack[top_index]);
 }
 
