@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create.c                                           :+:      :+:    :+:   */
+/*   append.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 18:20:42 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/16 18:20:42 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/03/17 15:59:18 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/03/17 15:59:18 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "command_list.h"
-#include "_command_list.h"
+#include "libft.h"
 #include <stdlib.h>
 
-t_command_list	*create_command_list(void)
+t_command_list	*_command_list_append(t_command_list *self, const char *command)
 {
-	t_command_list	*commands;
+	char	*copy;
+	t_list	*new_command;
 
-	commands = (t_command_list *)malloc(sizeof(t_command_list));
-	if (commands == NULL)
+	copy = ft_strdup(command);
+	if (copy == NULL)
 		return (NULL);
-	commands->commands = NULL;
-	commands->append = _command_list_append;
-	return (commands);
+	new_command = ft_lstnew(copy);
+	if (new_command == NULL)
+		return (free(copy), NULL);
+	ft_lstadd_back(&self->commands, new_command);
+	return (self);
 }

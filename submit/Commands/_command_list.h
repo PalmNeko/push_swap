@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create.c                                           :+:      :+:    :+:   */
+/*   _command_list.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 18:20:42 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/16 18:20:42 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/03/17 15:57:44 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/03/17 15:57:44 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "command_list.h"
-#include "_command_list.h"
-#include <stdlib.h>
+#ifndef _COMMAND_LIST_H
+# define _COMMAND_LIST_H
 
-t_command_list	*create_command_list(void)
-{
-	t_command_list	*commands;
+# include "command_list.h"
 
-	commands = (t_command_list *)malloc(sizeof(t_command_list));
-	if (commands == NULL)
-		return (NULL);
-	commands->commands = NULL;
-	commands->append = _command_list_append;
-	return (commands);
-}
+t_command_list	*_command_list_append(
+					t_command_list *self, const char *command);
+
+#endif
