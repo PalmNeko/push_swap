@@ -21,5 +21,6 @@ int				_stack_pop(struct s_stack *self);
 void			_stack_rotate(struct s_stack *self);
 void			_stack_reverse_rotate(struct s_stack *self);
 struct s_stack	*_stack_clone(struct s_stack *self);
+int				*_stack_get_head(t_stack *self, int index_from_top);
 
 #endif

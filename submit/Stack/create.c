@@ -38,5 +38,6 @@ t_stack	*create_stack(int max_len)
 	stack->shift_up = _stack_rotate;
 	stack->shift_down = _stack_reverse_rotate;
 	stack->clone = _stack_clone;
+	stack->get_head = _stack_get_head;
 	return (stack);
 }

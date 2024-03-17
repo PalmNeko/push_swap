@@ -37,6 +37,7 @@ typedef struct s_stack {
 	void			(*reverse_rotate)(struct s_stack *self);
 	void			(*shift_down)(struct s_stack *self);
 	struct s_stack	*(*clone)(struct s_stack *self);
+	int				*(*get_head)(struct s_stack *self, int index_from_top);
 }	t_stack;
 
 t_stack	*create_stack(int max_len);
