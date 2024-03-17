@@ -15,7 +15,7 @@ ifeq ($(OS),Windows_NT)
 	NAME = tester.exe
 endif
 TARGET_DIR = ../submit
-SRC = $(shell find $(TARGET_DIR) -name "*.c" -not -name "main.c" -not -path "*/Libft/*" -not -path "*/ft_printf/*")
+SRC = $(shell find $(TARGET_DIR) -not -name "__*.c" -name "*.c" -not -name "main.c" -not -path "*/Libft/*" -not -path "*/ft_printf/*")
 SRC += $(shell find . -name "*_test.c")
 OBJS = $(SRC:.c=.o)
 DEPENDS = $(SRC:.c=.d)
