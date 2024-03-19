@@ -24,5 +24,6 @@ t_command_list	*create_command_list(void)
 		return (NULL);
 	commands->commands = NULL;
 	commands->append = _command_list_append;
+	commands->append_repeatedly = _command_list_append_repeatedly;
 	return (commands);
 }

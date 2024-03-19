@@ -19,6 +19,8 @@ typedef struct s_command_list	t_command_list;
 struct s_command_list {
 	t_list			*commands;
 	t_command_list	*(*append)(t_command_list *self, const char *command);
+	t_command_list	*(*append_repeatedly)(
+			t_command_list *self, const char *command, int times);
 };
 
 t_command_list	*create_command_list(void);

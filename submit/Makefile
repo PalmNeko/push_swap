@@ -17,6 +17,7 @@ SRC = \
 	Commands/append.c \
 	Commands/create.c \
 	Commands/destroy.c \
+	Commands/command_list_append_repeatedly.c \
 	Stack/create.c \
 	Stack/destroy.c \
 	Stack/print.c \
@@ -25,6 +26,7 @@ SRC = \
 	Stack/get_head.c \
 	validators/validate_no_duplicates.c \
 	validators/validate_numstrings.c \
+	logics/compress_commands.c \
 	logics/generate_sort_commands.c \
 	logics/push_swap_bubble_sort.c \
 	printers/print_commands.c

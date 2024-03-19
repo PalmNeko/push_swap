@@ -17,5 +17,6 @@
 
 t_command_list	*_command_list_append(
 					t_command_list *self, const char *command);
-
+t_command_list	*_command_list_append_repeatedly(
+					t_command_list *self, const char *command, int times);
 #endif

@@ -21,7 +21,7 @@ OBJS = $(SRC:.c=.o)
 DEPENDS = $(SRC:.c=.d)
 CC = cc
 CFLAGS += -Wall -Werror -Wextra
-CFLAGS += -coverage
+CFLAGS += -g -O0 -coverage
 INCS = -I$(TARGET_DIR)/includes -I$(TARGET_DIR)/Libft -I$(TARGET_DIR)/ft_printf
 INCS += -I./includes/tyctest
 CFLAGS += $(INCS)
