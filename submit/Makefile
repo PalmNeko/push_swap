@@ -14,6 +14,9 @@ NAME = push_swap
 CC = cc
 SRC = \
 	main.c \
+	Commands/append.c \
+	Commands/create.c \
+	Commands/destroy.c \
 	Stack/create.c \
 	Stack/destroy.c \
 	Stack/print.c \
@@ -21,7 +24,10 @@ SRC = \
 	Stack/clone.c \
 	Stack/get_head.c \
 	validators/validate_no_duplicates.c \
-	validators/validate_numstrings.c
+	validators/validate_numstrings.c \
+	logics/generate_sort_commands.c \
+	logics/push_swap_bubble_sort.c \
+	printers/print_commands.c
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
