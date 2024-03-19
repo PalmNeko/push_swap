@@ -17,5 +17,6 @@
 # include "command_list.h"
 
 t_command_list	*push_swap_bubble_sort(t_stack *stack_a, t_stack *stack_b);
+t_command_list	*compress_commands(t_command_list *commands, int stack_size);
 
 #endif
