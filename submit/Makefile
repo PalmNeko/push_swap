@@ -18,6 +18,8 @@ SRC = \
 	Commands/create.c \
 	Commands/destroy.c \
 	Commands/command_list_append_repeatedly.c \
+	compresser/compress_straight_rotate.c \
+	compresser/halfcut_straight_rotate.c \
 	Stack/create.c \
 	Stack/destroy.c \
 	Stack/print.c \
@@ -33,6 +35,7 @@ SRC = \
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
+DEPENDS = $(SRC:.c=.d)
 CFLAGS += -Wall -Werror -Wextra -MP -MMD
 INCS = -I./includes -I./Libft -I./ft_printf
 CFLAGS += $(INCS)
