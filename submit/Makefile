@@ -32,10 +32,16 @@ SRC = \
 	logics/generate_sort_commands.c \
 	logics/push_swap_bubble_sort.c \
 	printers/print_commands.c
+SRC_BONUS = \
+	$(filter-out main.c, $(SRC)) \
+	checker_main_bonus.c
+
 LIBFT = libft.a
 LIBFTPRINTF = libftprintf.a
 OBJS = $(SRC:.c=.o)
 DEPENDS = $(SRC:.c=.d)
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
+DEPENDS_BONUS = $(SRC_BONUS:.c=.d)
 CFLAGS += -Wall -Werror -Wextra -MP -MMD
 INCS = -I./includes -I./Libft -I./ft_printf
 CFLAGS += $(INCS)
@@ -45,8 +51,16 @@ all: $(NAME)
 
 include .install.mk
 -include $(DEPENDS)
+-include $(DEPENDS_BONUS)
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) -o $@ $(filter %.o, $^) $(LIBS)
+
+.PHONY: bonus
+bonus: checker
+
+checker: $(OBJS_BONUS) $(LIBFT) $(LIBFTPRINTF)
+	: $(OBJS_BONUS)
 	$(CC) $(CFLAGS) -o $@ $(filter %.o, $^) $(LIBS)
 
 $(LIBFT): Libft
@@ -64,6 +78,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) checker
 	$(MAKE) --directory ft_printf fclean
 	$(MAKE) --directory Libft fclean
 
