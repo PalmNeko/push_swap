@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logics.h                                           :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 17:08:05 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/18 17:08:05 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/03/21 17:38:51 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/03/21 17:38:51 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LOGICS_H
-# define LOGICS_H
+#include "libft.h"
 
-# include "stack.h"
-# include "command_list.h"
-
-t_command_list	*generate_sort_commands(t_stack	*input_stack);
-t_stack			*generate_stack_strs_to(char *strs[], int len);
-
-#endif
+int	print_error(void)
+{
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	return (1);
+}

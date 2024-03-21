@@ -16,5 +16,6 @@
 # include "command_list.h"
 
 void	print_commands(t_command_list *commands);
+int		print_error(void);
 
 #endif

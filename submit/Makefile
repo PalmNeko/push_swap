@@ -30,8 +30,10 @@ SRC = \
 	validators/validate_numstrings.c \
 	logics/compress_commands.c \
 	logics/generate_sort_commands.c \
+	logics/generate_stack_strs_to.c \
 	logics/push_swap_bubble_sort.c \
-	printers/print_commands.c
+	printers/print_commands.c \
+	printers/print_error.c
 SRC_BONUS = \
 	$(filter-out main.c, $(SRC)) \
 	checker_main_bonus.c
