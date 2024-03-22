@@ -36,6 +36,9 @@ SRC = \
 	printers/print_error.c
 SRC_BONUS = \
 	$(filter-out main.c, $(SRC)) \
+	logics/apply_order_bonus.c \
+	validators/validate_instruction_format_bonus.c \
+	validators/validate_is_sorted.c \
 	checker_main_bonus.c
 
 LIBFT = libft.a
@@ -62,7 +65,6 @@ $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
 bonus: checker
 
 checker: $(OBJS_BONUS) $(LIBFT) $(LIBFTPRINTF)
-	: $(OBJS_BONUS)
 	$(CC) $(CFLAGS) -o $@ $(filter %.o, $^) $(LIBS)
 
 $(LIBFT): Libft
