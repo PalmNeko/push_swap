@@ -31,21 +31,21 @@ static bool	reverse_rotate(t_stack *target);
  */
 bool	apply_order(t_stack *a, t_stack *b, char *command)
 {
-	if (ft_strncmp(command, "pa", 3) == 0)
+	if (ft_strcmp(command, "pa") == 0)
 		push_to(b, a);
-	if (ft_strncmp(command, "pb", 3) == 0)
+	if (ft_strcmp(command, "pb") == 0)
 		push_to(a, b);
-	if (ft_strncmp(command, "sa", 3) == 0 || ft_strncmp(command, "ss", 3) == 0)
+	if (ft_strcmp(command, "sa") == 0 || ft_strcmp(command, "ss") == 0)
 		swap_first_and_second(a);
-	if (ft_strncmp(command, "sb", 3) == 0 || ft_strncmp(command, "ss", 3) == 0)
+	if (ft_strcmp(command, "sb") == 0 || ft_strcmp(command, "ss") == 0)
 		swap_first_and_second(b);
-	if (ft_strncmp(command, "ra", 3) == 0 || ft_strncmp(command, "rr", 3) == 0)
+	if (ft_strcmp(command, "ra") == 0 || ft_strcmp(command, "rr") == 0)
 		rotate(a);
-	if (ft_strncmp(command, "rb", 3) == 0 || ft_strncmp(command, "rr", 3) == 0)
+	if (ft_strcmp(command, "rb") == 0 || ft_strcmp(command, "rr") == 0)
 		rotate(b);
-	if (ft_strncmp(command, "rra", 4) == 0 || ft_strncmp(command, "rrr", 4) == 0)
+	if (ft_strcmp(command, "rra") == 0 || ft_strcmp(command, "rrr") == 0)
 		reverse_rotate(a);
-	if (ft_strncmp(command, "rrb", 4) == 0 || ft_strncmp(command, "rrr", 4) == 0)
+	if (ft_strcmp(command, "rrb") == 0 || ft_strcmp(command, "rrr") == 0)
 		reverse_rotate(b);
 	return (true);
 }
