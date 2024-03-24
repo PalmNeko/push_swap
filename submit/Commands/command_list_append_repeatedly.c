@@ -22,9 +22,9 @@ t_command_list	*_command_list_append_repeatedly(
 		return (self);
 	work = create_command_list();
 	if (work == NULL)
-		return(NULL);
+		return (NULL);
 	count = 0;
-	while(count < times)
+	while (count < times)
 	{
 		if (work->append(work, command) == NULL)
 			return (destroy_command_list(work), NULL);

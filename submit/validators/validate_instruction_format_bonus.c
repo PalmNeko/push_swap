@@ -15,7 +15,7 @@
 
 bool	validate_instruction_format(const char *instruction)
 {
-	char	*commands[] = {
+	const char	*commands[] = {
 		"pa", "pb",
 		"sa", "sb", "ss",
 		"ra", "rb", "rr",

@@ -25,7 +25,6 @@ int	main(int argc, char *argv[])
 	t_stack			*input_stack;
 	t_command_list	*commands;
 
-
 	if (argc == 1)
 		return (0);
 	input_stack = generate_stack_strs_to(&argv[1], argc - 1);

@@ -22,6 +22,7 @@
 int	*_stack_get_head(t_stack *self, int index_from_top)
 {
 	int	top_index;
+
 	if (self->len <= 0)
 		return (NULL);
 	top_index = self->len - 1;

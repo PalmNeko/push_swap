@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-static void print_command(void *content)
+static void	print_command(void *content)
 {
 	char	*command;
 
