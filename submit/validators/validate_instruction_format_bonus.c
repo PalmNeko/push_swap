@@ -23,15 +23,13 @@ bool	validate_instruction_format(const char *instruction)
 	};
 	const int	commands_cnt = 11;
 	int			index;
-	char		*check_command;
 	int			len;
 
 	index = 0;
 	while (index < commands_cnt)
 	{
-		check_command = commands[index];
-		len = ft_strlen(check_command);
-		if (ft_strncmp(check_command, instruction, len + 1) == 0)
+		len = ft_strlen(commands[index]);
+		if (ft_strncmp(commands[index], instruction, len + 1) == 0)
 			return (true);
 		index++;
 	}
