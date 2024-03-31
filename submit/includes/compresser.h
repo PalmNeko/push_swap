@@ -14,10 +14,12 @@
 # define COMPRESSER_H
 
 # include "command_list.h"
+# include "stack.h"
 
 t_command_list	*compress_straight_rotate(
 					t_command_list *commands, int stack_size);
 t_command_list	*halfcut_straight_rotate(
 					t_command_list *commands, int stack_size);
+int				renumber_stack(t_stack *stack);
 
 #endif

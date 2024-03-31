@@ -20,6 +20,7 @@ SRC = \
 	Commands/command_list_append_repeatedly.c \
 	compresser/compress_straight_rotate.c \
 	compresser/halfcut_straight_rotate.c \
+	compresser/renumber_stack.c \
 	Stack/create.c \
 	Stack/destroy.c \
 	Stack/print.c \
