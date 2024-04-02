@@ -27,27 +27,27 @@ t_command_list	*halfcut_straight_rotate(
 	iter = commands->commands;
 	while (iter != NULL)
 	{
-		if (halfcut_ra_statement(
-				&iter, zipped_cmds, stack_size) == -1)
-			return (destroy_command_list(zipped_cmds), NULL);
 		if (ft_strcmp(iter->content, "ra") != 0)
 		{
 			if (zipped_cmds->append(zipped_cmds, iter->content) == NULL)
 				return (destroy_command_list(zipped_cmds), NULL);
 		}
+		else if (halfcut_ra_statement(
+				&iter, zipped_cmds, stack_size) == -1)
+			return (destroy_command_list(zipped_cmds), NULL);
 		iter = iter->next;
 	}
 	return (zipped_cmds);
 }
 
-static int	count_command(t_list *command_lst, const char *command)
+static int	count_command(t_list *command_lst, const char *command, int max)
 {
 	t_list	*iter;
 	int		count;
 
 	count = 0;
 	iter = command_lst;
-	while (iter != NULL)
+	while (iter != NULL && count < max)
 	{
 		if (ft_strcmp(iter->content, command) != 0)
 			break ;
@@ -65,18 +65,15 @@ static int	halfcut_ra_statement(
 	int				times;
 	t_command_list	*append_result;
 
-	ra_count = count_command(*command_lst, "ra");
-	times = ra_count;
-	while (times >= stack_size)
-		times -= stack_size;
+	ra_count = count_command(*command_lst, "ra", stack_size / 2 + 1);
 	append_result = NULL;
-	if (times > stack_size / 2)
-		append_result = new->append_repeatedly(new, "rra", stack_size - times);
+	if (ra_count > stack_size / 2)
+		append_result = new->append_repeatedly(new, "rra", stack_size - ra_count);
 	else
-		append_result = new->append_repeatedly(new, "ra", times);
+		append_result = new->append_repeatedly(new, "ra", ra_count);
 	if (append_result == NULL)
 		return (-1);
-	times = ra_count;
+	times = ra_count - 1;
 	iter = *command_lst;
 	while (times > 0)
 	{
