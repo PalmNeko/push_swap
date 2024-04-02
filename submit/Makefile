@@ -70,11 +70,9 @@ checker: $(OBJS_BONUS) $(LIBFT) $(LIBFTPRINTF)
 
 $(LIBFT): Libft
 	"$(MAKE)" --directory Libft
-	cp Libft/$(LIBFT) ./$(LIBFT)
 
 $(LIBFTPRINTF): ft_printf
 	"$(MAKE)" --directory ft_printf
-	cp ft_printf/$(LIBFTPRINTF) ./$(LIBFTPRINTF)
 
 clean:
 	find . -name "*.d" -delete
@@ -84,7 +82,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) checker
-	$(MAKE) --directory ft_printf fclean
-	$(MAKE) --directory Libft fclean
+	"$(MAKE)" --directory ft_printf fclean
+	"$(MAKE)" --directory Libft fclean
 
 re: fclean all
