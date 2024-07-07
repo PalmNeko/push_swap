@@ -4,7 +4,7 @@
 ## フロー
 
 ```mermaid
-*フローchart TB
+flowchart TB
   node_1(["開始"])
   node_2["引数チェック"]
   node_3["数値に変換"]
