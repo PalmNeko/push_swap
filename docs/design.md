@@ -647,7 +647,7 @@ push_swap 構造体をメモリ上に確保して返す。
 
 **宣言**
 
-`void ps_destroy(t_ps_cmdlst *cmdlst);`
+`void ps_destroy_cmd(t_ps_cmdlst *cmdlst);`
 
 **引数**
 
