@@ -1,19 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    checker.mk                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/07/22 12:51:00 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/07/22 12:38:57 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = checker
 CC = cc
 SRC = \
-	main.c \
 	Commands/append.c \
 	Commands/create.c \
 	Commands/destroy.c \
@@ -34,21 +33,21 @@ SRC = \
 	logics/generate_stack_strs_to.c \
 	logics/push_swap_bubble_sort.c \
 	printers/print_commands.c \
-	printers/print_error.c
+	printers/print_error.c \
+	logics/apply_order_bonus.c \
+	validators/validate_instruction_format_bonus.c \
+	validators/validate_is_sorted.c \
+	checker_main_bonus.c
 
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)
 CFLAGS += -Wall -Werror -Wextra -MP -MMD -I./includes -I./Libft -I./ft_printf
-CLEAN_FILES = $(OBJS) $(DEPS)
-FCLEAN_FILES = $(NAME)
 # extern variables - defined and appended from libs
 #   LIBS    : need libraries ex: Libft/libft.a
 #   LDFLAGS : ld flags ex: -L Libft
 #   LDLIBS  : load lib flags ex: -l ft
 
-all: $(NAME) bonus
-
-bonus: checker
+all: $(NAME)
 
 include fony.mk
 include libs.mk
@@ -58,17 +57,5 @@ $(NAME): $(OBJS) $(LIBS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
-
-checker:
-	make -f checker.mk
-
-checker_clean:
-	make -f checker.mk clean
-
-checker_fclean:
-	make -f checker.mk fclean
-
-clean:  checker_clean
-fclean: checker_clean
 
 -include $(DEPS)

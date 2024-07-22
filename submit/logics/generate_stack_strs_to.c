@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_stack_strs_to.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:00:30 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/21 17:00:30 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/07/22 11:18:21 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 #include <stdbool.h>
 #include <stddef.h>
+#include <errno.h>
 
 t_stack	*generate_stack_strs_to(char *strs[], int len)
 {

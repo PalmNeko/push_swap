@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_unique_values.c                           :+:      :+:    :+:   */
+/*   validate_no_duplicates.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 00:02:37 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/15 00:02:37 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/07/22 11:18:09 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdbool.h>
 #include <stdlib.h>
+#include <errno.h>
 
 static int	cmp_int_asc(const void *v1, const void *v2)
 {
