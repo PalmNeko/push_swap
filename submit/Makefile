@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/07/22 12:51:00 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/07/30 14:21:22 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC = \
 
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)
-CFLAGS += -Wall -Werror -Wextra -MP -MMD -I./includes -I./Libft -I./ft_printf
+CFLAGS += -Wall -Werror -Wextra -MP -MMD -I./includes -I./Libft
 CLEAN_FILES = $(OBJS) $(DEPS)
 FCLEAN_FILES = $(NAME)
 # extern variables - defined and appended from libs
@@ -53,7 +53,7 @@ bonus: checker
 include fony.mk
 include libs.mk
 
-$(NAME): $(OBJS) $(LIBS)
+$(NAME): $(LIBS) $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 %.o: %.c
