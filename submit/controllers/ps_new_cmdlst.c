@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_types.h                                         :+:      :+:    :+:   */
+/*   ps_new_cmdlst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 16:21:49 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 16:21:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/07/31 17:18:29 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/07/31 17:18:29 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_TYPES_H
-# define PS_TYPES_H
+#include "ps_types.h"
+#include <stdlib.h>
 
-# include "libft.h"
+t_ps_cmdlst	*ps_new_cmdlst(void)
+{
+	t_ps_cmdlst	*cmdlst;
 
-typedef struct s_ps_stack {
-	t_list	*top;
-	int		size;
-}	t_ps_stack;
-
-typedef struct s_ps_cmdlst {
-	t_list	*top;
-}	t_ps_cmdlst;
-
-#endif
+	cmdlst = (t_ps_cmdlst *)malloc(sizeof(t_ps_cmdlst));
+	if (cmdlst == NULL)
+		return (NULL);
+	cmdlst->top = NULL;
+	return (cmdlst);
+}

@@ -22,4 +22,9 @@ t_list		*ps_pop_stack(const t_ps_stack *stack);
 int			ps_push_stack(t_ps_stack *stack, int value);
 void		ps_swap_stack(const	t_ps_stack *stack);
 
+int			ps_append_cmdlst(t_ps_cmdlst *cmdlst, const char *command);
+void		ps_destroy_cmdlst(t_ps_cmdlst *cmdlst);
+t_list		*ps_get_cmdlst(t_ps_cmdlst *cmdlst, int n);
+t_ps_cmdlst	*ps_new_cmdlst(void);
+
 #endif
