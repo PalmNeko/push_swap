@@ -48,5 +48,6 @@ int			*ps_str_to_int_array(const char *strs[], int size);
 int			ps_sort_for_three(t_push_swap *ps);
 
 t_ps_cmdlst	*ps_turk_sort(int *values, int size);
+t_ps_cmdlst	*ps_main(int argc, const char *argv[]);
 
 #endif
