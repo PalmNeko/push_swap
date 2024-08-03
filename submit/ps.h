@@ -41,4 +41,6 @@ int			ps_sa(t_push_swap *ps);
 int			ps_sb(t_push_swap *ps);
 int			ps_ss(t_push_swap *ps);
 
+bool	ps_validate_no_duplicates(int *values, size_t len);
+
 #endif
