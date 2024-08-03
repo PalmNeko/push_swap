@@ -6,39 +6,50 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/07/30 14:21:22 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/03 13:02:17 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
 SRC = \
-	main.c \
-	Commands/append.c \
-	Commands/create.c \
-	Commands/destroy.c \
-	Commands/command_list_append_repeatedly.c \
-	compresser/compress_straight_rotate.c \
-	compresser/halfcut_straight_rotate.c \
-	compresser/renumber_stack.c \
-	Stack/create.c \
-	Stack/destroy.c \
-	Stack/print.c \
-	Stack/instructions.c \
-	Stack/clone.c \
-	Stack/get_head.c \
-	validators/validate_no_duplicates.c \
-	validators/validate_numstrings.c \
-	logics/compress_commands.c \
-	logics/generate_sort_commands.c \
-	logics/generate_stack_strs_to.c \
-	logics/push_swap_bubble_sort.c \
-	printers/print_commands.c \
-	printers/print_error.c
+	./main.c \
+	./calculators/ps_renumber.c \
+	./calculators/ps_sort_for_three.c \
+	./calculators/ps_str_to_int_array.c \
+	./controllers/ps_append_cmdlst.c \
+	./controllers/ps_destroy_cmldlst.c \
+	./controllers/ps_destroy_ps.c \
+	./controllers/ps_destroy_stack.c \
+	./controllers/ps_get_cmdlst.c \
+	./controllers/ps_get_stack.c \
+	./controllers/ps_new_cmdlst.c \
+	./controllers/ps_new_ps.c \
+	./controllers/ps_new_stack.c \
+	./controllers/ps_pa.c \
+	./controllers/ps_pb.c \
+	./controllers/ps_pop_stack.c \
+	./controllers/ps_push_stack.c \
+	./controllers/ps_ra.c \
+	./controllers/ps_rb.c \
+	./controllers/ps_rr.c \
+	./controllers/ps_rra.c \
+	./controllers/ps_rrb.c \
+	./controllers/ps_rrr.c \
+	./controllers/ps_sa.c \
+	./controllers/ps_sb.c \
+	./controllers/ps_ss.c \
+	./controllers/ps_swap_stack.c \
+	./logics/ps_main.c \
+	./logics/ps_print_cmdlst.c \
+	./logics/ps_print_error.c \
+	./logics/ps_turk_sort.c \
+	./validators/ps_validate_no_duplicates.c
+
 
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)
-CFLAGS += -Wall -Werror -Wextra -MP -MMD -I./includes -I./Libft
+CFLAGS += -Wall -Werror -Wextra -MP -MMD -I. -I./Libft
 CLEAN_FILES = $(OBJS) $(DEPS)
 FCLEAN_FILES = $(NAME)
 # extern variables - defined and appended from libs

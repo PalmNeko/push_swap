@@ -32,7 +32,7 @@ t_ps_cmdlst	*ps_turk_sort(int *values, int size)
 	free(copy);
 	if (ps == NULL)
 		return (NULL);
-	if (ft_lstsize(ps->stack_a) == 3 && ps_sort_for_three(ps) == -1)
+	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
 		return (ps_destroy_ps(ps), NULL);
 	cmdlst = ps->cmdlst;
 	ps->cmdlst = NULL;

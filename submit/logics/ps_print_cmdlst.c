@@ -15,7 +15,6 @@
 
 void	ps_print_cmdlst(int fd, t_ps_cmdlst *cmdlst)
 {
-	t_list	*first;
 	t_list	*itr;
 
 	itr = cmdlst->top;

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ps_types.h"
+#include <stdlib.h>
 
 int	ps_push_stack(t_ps_stack *stack, int value)
 {

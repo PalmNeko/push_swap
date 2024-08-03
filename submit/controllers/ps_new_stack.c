@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ps.h"
+#include <stdlib.h>
 
 t_ps_stack	*ps_new_stack(void)
 {
@@ -21,4 +22,5 @@ t_ps_stack	*ps_new_stack(void)
 		return (NULL);
 	new_stack->top = NULL;
 	new_stack->size = 0;
+	return (new_stack);
 }

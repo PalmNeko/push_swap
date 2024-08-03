@@ -16,7 +16,7 @@
 void	ps_destroy_cmdlst(t_ps_cmdlst *cmdlst)
 {
 	if (cmdlst == NULL)
-		return (NULL);
+		return ;
 	ft_lstclear(&cmdlst->top, free);
 	free(cmdlst);
 }
