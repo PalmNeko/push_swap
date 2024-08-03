@@ -27,4 +27,18 @@ void		ps_destroy_cmdlst(t_ps_cmdlst *cmdlst);
 t_list		*ps_get_cmdlst(t_ps_cmdlst *cmdlst, int n);
 t_ps_cmdlst	*ps_new_cmdlst(void);
 
+void		ps_destroy_ps(t_push_swap *ps);
+t_push_swap	*ps_new_ps(const int *values, int size);
+int			ps_pa(t_push_swap *ps);
+int			ps_pb(t_push_swap *ps);
+int			ps_ra(t_push_swap *ps);
+int			ps_rb(t_push_swap *ps);
+int			ps_rr(t_push_swap *ps);
+int			ps_rra(t_push_swap *ps);
+int			ps_rrb(t_push_swap *ps);
+int			ps_rrr(t_push_swap *ps);
+int			ps_sa(t_push_swap *ps);
+int			ps_sb(t_push_swap *ps);
+int			ps_ss(t_push_swap *ps);
+
 #endif

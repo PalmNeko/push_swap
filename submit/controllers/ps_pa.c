@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_types.h                                         :+:      :+:    :+:   */
+/*   ps_pa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 16:21:49 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 16:21:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/08/03 10:20:06 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/08/03 10:20:06 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_TYPES_H
-# define PS_TYPES_H
+#include "ps.h"
 
-# include "libft.h"
+int	ps_pa(t_push_swap *ps)
+{
+	t_list	*top_b;
 
-typedef struct s_ps_stack {
-	t_list	*top;
-	int		size;
-}	t_ps_stack;
-
-typedef struct s_ps_cmdlst {
-	t_list	*top;
-}	t_ps_cmdlst;
-
-typedef struct s_push_swap {
-	t_ps_cmdlst	*cmdlst;
-	t_ps_stack	*stack_a;
-	t_ps_stack	*stack_b;
-}	t_push_swap;
-
-#endif
+	top_b = ps_pop_stack(ps->stack_b);
+	if (top_b == NULL)
+		return (0);
+	if (ps_push_stack(ps->stack_a, *(int *)top_b->content) == -1)
+		return (-1);
+	if (ps_append_cmdlst(ps->cmdlst, "pa") == -1)
+		return (-1);
+	return (0);
+}

@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_types.h                                         :+:      :+:    :+:   */
+/*   ps_sa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 16:21:49 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 16:21:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/08/03 10:39:18 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/08/03 10:39:18 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_TYPES_H
-# define PS_TYPES_H
+#include "ps.h"
 
-# include "libft.h"
-
-typedef struct s_ps_stack {
-	t_list	*top;
-	int		size;
-}	t_ps_stack;
-
-typedef struct s_ps_cmdlst {
-	t_list	*top;
-}	t_ps_cmdlst;
-
-typedef struct s_push_swap {
-	t_ps_cmdlst	*cmdlst;
-	t_ps_stack	*stack_a;
-	t_ps_stack	*stack_b;
-}	t_push_swap;
-
-#endif
+int	ps_sa(t_push_swap *ps)
+{
+	if (ft_lstat(ps->stack_a->top, 0) == NULL
+		|| ft_lstat(ps->stack_a->top, 1) == NULL)
+		return (0);
+	ps_swap_stack(ps->stack_a);
+	if (ps_append_cmdlst(ps->cmdlst, "sa") == -1)
+		return (-1);
+	return (0);
+}

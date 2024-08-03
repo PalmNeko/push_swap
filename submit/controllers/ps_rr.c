@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_types.h                                         :+:      :+:    :+:   */
+/*   ps_rr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 16:21:49 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 16:21:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/08/03 11:17:59 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/08/03 11:17:59 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_TYPES_H
-# define PS_TYPES_H
+#include "ps.h"
 
-# include "libft.h"
-
-typedef struct s_ps_stack {
-	t_list	*top;
-	int		size;
-}	t_ps_stack;
-
-typedef struct s_ps_cmdlst {
-	t_list	*top;
-}	t_ps_cmdlst;
-
-typedef struct s_push_swap {
-	t_ps_cmdlst	*cmdlst;
-	t_ps_stack	*stack_a;
-	t_ps_stack	*stack_b;
-}	t_push_swap;
-
-#endif
+int	ps_rr(t_push_swap *ps)
+{
+	if ((ps->stack_a->top == NULL
+			|| ps->stack_a->top == ps->stack_a->top->next)
+		&& (ps->stack_b->top == NULL
+			|| ps->stack_b->top == ps->stack_b->top->next))
+		return (0);
+	ps->stack_a->top = ps->stack_a->top->next;
+	ps->stack_b->top = ps->stack_b->top->next;
+	if (ps_append_cmdlst(ps->cmdlst, "rr") == -1)
+		return (-1);
+	return (0);
+}

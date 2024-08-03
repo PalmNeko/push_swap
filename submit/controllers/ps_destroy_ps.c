@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_types.h                                         :+:      :+:    :+:   */
+/*   ps_destroy_ps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 16:21:49 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 16:21:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/08/03 10:08:32 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/08/03 10:08:32 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_TYPES_H
-# define PS_TYPES_H
+#include <stdlib.h>
+#include "ps.h"
 
-# include "libft.h"
-
-typedef struct s_ps_stack {
-	t_list	*top;
-	int		size;
-}	t_ps_stack;
-
-typedef struct s_ps_cmdlst {
-	t_list	*top;
-}	t_ps_cmdlst;
-
-typedef struct s_push_swap {
-	t_ps_cmdlst	*cmdlst;
-	t_ps_stack	*stack_a;
-	t_ps_stack	*stack_b;
-}	t_push_swap;
-
-#endif
+void	ps_destroy_ps(t_push_swap *ps)
+{
+	ps_destroy_cmdlst(ps->cmdlst);
+	ps_destroy_stack(ps->stack_a);
+	ps_destroy_stack(ps->stack_b);
+	free(ps);
+	return ;
+}
