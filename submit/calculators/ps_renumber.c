@@ -26,7 +26,7 @@ int	ps_renumber(int *values, int size)
 	if (copy == NULL)
 		return (-1);
 	ft_memcpy(copy, values, sizeof(int) * size);
-	ft_selection_sort(values, size, sizeof(int), cmp_int);
+	ft_selection_sort(copy, size, sizeof(int), cmp_int);
 	b_arg = (t_bsearch_arg) {.base = copy, .compar = cmp_int,
 			.size = sizeof(int), .nmemb = size};
 	index = 0;
