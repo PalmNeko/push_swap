@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/03 13:13:40 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/03 16:13:09 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,37 +14,7 @@ NAME = push_swap
 CC = cc
 SRC = \
 	./main.c \
-	./calculators/ps_renumber.c \
-	./calculators/ps_sort_for_three.c \
-	./calculators/ps_str_to_int_array.c \
-	./controllers/ps_append_cmdlst.c \
-	./controllers/ps_destroy_cmldlst.c \
-	./controllers/ps_destroy_ps.c \
-	./controllers/ps_destroy_stack.c \
-	./controllers/ps_get_cmdlst.c \
-	./controllers/ps_get_stack.c \
-	./controllers/ps_new_cmdlst.c \
-	./controllers/ps_new_ps.c \
-	./controllers/ps_new_stack.c \
-	./controllers/ps_pa.c \
-	./controllers/ps_pb.c \
-	./controllers/ps_pop_stack.c \
-	./controllers/ps_push_stack.c \
-	./controllers/ps_ra.c \
-	./controllers/ps_rb.c \
-	./controllers/ps_rr.c \
-	./controllers/ps_rra.c \
-	./controllers/ps_rrb.c \
-	./controllers/ps_rrr.c \
-	./controllers/ps_sa.c \
-	./controllers/ps_sb.c \
-	./controllers/ps_ss.c \
-	./controllers/ps_swap_stack.c \
-	./logics/ps_main.c \
-	./logics/ps_print_cmdlst.c \
-	./logics/ps_print_error.c \
-	./logics/ps_turk_sort.c \
-	./validators/ps_validate_no_duplicates.c
+	$(shell find . -type f -name "ps_*.c")
 
 
 OBJS = $(SRC:.c=.o)
