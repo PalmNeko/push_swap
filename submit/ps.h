@@ -45,5 +45,6 @@ bool	ps_validate_no_duplicates(int *values, size_t len);
 
 int			ps_renumber(int *values, int size);
 int			*ps_str_to_int_array(const char *strs[], int size);
+int			ps_sort_for_three(t_push_swap *ps);
 
 #endif
