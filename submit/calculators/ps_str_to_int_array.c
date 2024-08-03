@@ -26,7 +26,7 @@ int	*ps_str_to_int_array(const char *strs[], int size)
 	while (index < size)
 	{
 		array[index] = (int)ft_strtol(strs[index], &endptr, 10);
-		if (strs[index][0] == '\0' || *endptr == '\0')
+		if (strs[index][0] == '\0' || *endptr != '\0')
 			return (free(array), NULL);
 		index++;
 	}
