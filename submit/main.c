@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:41:11 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/03 13:05:57 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/03 13:30:08 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int argc, const char *argv[])
 		return (1);
 	}
 	ps_print_cmdlst(1, cmdlst);
+	ps_destroy_cmdlst(cmdlst);
 	return (0);
 }
