@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/03 13:02:17 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/03 13:13:40 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,10 @@ FCLEAN_FILES = $(NAME)
 all: $(NAME) bonus
 
 bonus: checker
+
+debug: LDFLAGS += -g -O0 -fsanitize=leak
+debug: CFLAGS  += -g -O0 -fsanitize=leak
+debug: re
 
 include fony.mk
 include libs.mk
