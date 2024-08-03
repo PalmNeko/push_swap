@@ -20,7 +20,7 @@ void	ps_print_cmdlst(int fd, t_ps_cmdlst *cmdlst)
 	itr = cmdlst->top;
 	while (itr != NULL)
 	{
-		ft_putstr_fd(itr->content, fd);
+		ft_putendl_fd(itr->content, fd);
 		itr = itr->next;
 	}
 	return ;
