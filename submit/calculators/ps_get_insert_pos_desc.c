@@ -35,11 +35,9 @@ int	ps_get_insert_pos_desc(t_ps_stack *stack, int value)
 	while (itr.has_next(&itr))
 	{
 		lst = itr.next(&itr);
-		if (max == *(int *)(lst->content) && value > max)
+		if ((max == *(int *)(lst->content) && min == *(int *)(lst->prev->content)) && (value > max || value < min))
 			return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
-		else if (min == *(int *)(lst->prev->content) && value < min)
-			return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
-		else if (*(int *)(lst->content) < value && value < *(int *)(lst->prev->content))
+		else if (*(int *)(lst->prev->content) > value && value > *(int *)(lst->content))
 			return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
 		pos++;
 	}
@@ -74,7 +72,7 @@ int	ps_get_max_value(t_ps_stack *stack)
 		if (max < value)
 			max = value;
 	}
-	return (value);
+	return (max);
 }
 
 int	ps_get_min_value(t_ps_stack *stack)
@@ -97,5 +95,5 @@ int	ps_get_min_value(t_ps_stack *stack)
 		if (min > value)
 			min = value;
 	}
-	return (value);
+	return (min);
 }
