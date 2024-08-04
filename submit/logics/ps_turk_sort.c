@@ -156,6 +156,19 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 		if (ps_pa(ps) == -1)
 			return (NULL);
 	}
+	min_ra_cnt = ps_get_insert_pos_asc(ps->stack_a, -1);
+	while (min_ra_cnt > 0)
+	{
+		if (ps_ra(ps) == -1)
+			return (NULL);
+		min_ra_cnt--;
+	}
+	while (min_ra_cnt < 0)
+	{
+		if (ps_rra(ps) == -1)
+			return (NULL);
+		min_ra_cnt++;
+	}
 	ps_print_ps(2, ps);
 	cmdlst = ps->cmdlst;
 	ps->cmdlst = NULL;
