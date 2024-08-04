@@ -31,9 +31,6 @@ t_ps_cmdlst	*ps_turk_sort(int *values, int size)
 	return (cmdlst);
 }
 
-int	ps_get_min_value(t_ps_stack *stack);
-int	ps_get_max_value(t_ps_stack *stack);
-
 t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 {
 	t_ps_cmdlst	*cmdlst;
