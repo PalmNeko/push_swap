@@ -12,6 +12,7 @@
 
 #include "ps.h"
 #include "libft.h"
+#include <limits.h>
 #include <stdlib.h>
 
 int			ps_init_turk_sort(const int *values, int size, t_push_swap **ps);
@@ -33,28 +34,86 @@ t_ps_cmdlst	*ps_turk_sort(int *values, int size)
 t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 {
 	t_ps_cmdlst	*cmdlst;
-	int			pb_pos;
+	int			rb_cnt;
+	int			ra_cnt;
+	int			min_ra_cnt;
+	int			min_rb_cnt;
+	t_list		*itr;
 
 	while (ft_lstsize(ps->stack_a->top) > 3)
 	{
-		ps_print_ps(2, ps);
-		pb_pos = ps_get_insert_pos_desc(ps->stack_b, *(int *)ps->stack_a->top->content);
-		while (pb_pos > 0)
+		min_ra_cnt = ft_lstsize(ps->stack_a->top);
+		min_rb_cnt = ft_lstsize(ps->stack_b->top);
+		// ps_print_ps(2, ps);
+		itr = ps->stack_a->top;
+		ra_cnt = 0;
+		while (ft_abs(ra_cnt) < ft_abs(min_ra_cnt) + ft_abs(min_rb_cnt))
+		{
+			rb_cnt = ps_get_insert_pos_desc(ps->stack_b, *(int *)itr->content);
+			if (ft_abs(rb_cnt) + ft_abs(ra_cnt) < ft_abs(min_ra_cnt) + ft_abs(min_rb_cnt))
+			{
+				min_ra_cnt = ra_cnt;
+				min_rb_cnt = rb_cnt;
+			}
+			itr = itr->next;
+			ra_cnt++;
+		}
+		itr = ps->stack_a->top;
+		ra_cnt = 0;
+		while (ft_abs(ra_cnt) < ft_abs(min_ra_cnt) + ft_abs(min_rb_cnt))
+		{
+			rb_cnt = ps_get_insert_pos_desc(ps->stack_b, *(int *)itr->content);
+			if (ft_abs(rb_cnt) + ft_abs(ra_cnt) < ft_abs(min_ra_cnt) + ft_abs(min_rb_cnt))
+			{
+				min_ra_cnt = ra_cnt;
+				min_rb_cnt = rb_cnt;
+			}
+			itr = itr->prev;
+			ra_cnt--;
+		}
+		// min_rb_cntとmin_ra_cntで符号が違う場合は、どちらに合わせたほうがより良いかを判定する。
+		while (min_ra_cnt > 0 && min_rb_cnt > 0)
+		{
+			if (ps_rr(ps) == -1)
+				return (NULL);
+			min_ra_cnt--;
+			min_rb_cnt--;
+		}
+		while (min_ra_cnt < 0 && min_rb_cnt < 0)
+		{
+			if (ps_rrr(ps) == -1)
+				return (NULL);
+			min_ra_cnt++;
+			min_rb_cnt++;
+		}
+		while (min_rb_cnt > 0)
 		{
 			if (ps_rb(ps) == -1)
 				return (NULL);
-			pb_pos--;
+			min_rb_cnt--;
 		}
-		while (pb_pos < 0)
+		while (min_rb_cnt < 0)
 		{
 			if (ps_rrb(ps) == -1)
 				return (NULL);
-			pb_pos++;
+			min_rb_cnt++;
+		}
+		while (min_ra_cnt > 0)
+		{
+			if (ps_ra(ps) == -1)
+				return (NULL);
+			min_ra_cnt--;
+		}
+		while (min_ra_cnt < 0)
+		{
+			if (ps_rra(ps) == -1)
+				return (NULL);
+			min_ra_cnt++;
 		}
 		if (ps_pb(ps) == -1)
 			return (NULL);
 	}
-	ps_print_ps(2, ps);
+	// ps_print_ps(2, ps);
 	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
 		return (NULL);
 	cmdlst = ps->cmdlst;
