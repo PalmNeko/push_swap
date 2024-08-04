@@ -114,6 +114,19 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 			return (NULL);
 	}
 	// ps_print_ps(2, ps);
+	rb_cnt = ps_get_insert_pos_desc(ps->stack_b, -1);
+	while (rb_cnt > 0)
+	{
+		if (ps_rb(ps) == -1)
+			return (NULL);
+		rb_cnt--;
+	}
+	while (rb_cnt < 0)
+	{
+		if (ps_rrb(ps) == -1)
+			return (NULL);
+		rb_cnt++;
+	}
 	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
 		return (NULL);
 	cmdlst = ps->cmdlst;
