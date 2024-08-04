@@ -31,6 +31,9 @@ t_ps_cmdlst	*ps_turk_sort(int *values, int size)
 	return (cmdlst);
 }
 
+int	ps_get_min_value(t_ps_stack *stack);
+int	ps_get_max_value(t_ps_stack *stack);
+
 t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 {
 	t_ps_cmdlst	*cmdlst;
@@ -132,6 +135,25 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 	// スタックAをソートする。
 	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
 		return (NULL);
+	// スタックAにいい感じにつっこむ
+	while (ft_lstsize(ps->stack_b->top) > 0)
+	{
+		// スタックBの先頭と、スタックAの一番下を比較して、スタックAの方が大きければ、回転。
+		ps_print_ps(2, ps);
+		if (ps_get_min_value(ps->stack_a) < *(int *)(ps->stack_b->top->content) && *(int *)(ps->stack_b->top->content) < ps_get_max_value(ps->stack_a))
+		{
+			// a->prev > b->top -> rra
+			while (*(int *)(ps->stack_a->top->content) - *(int *)(ps->stack_b->top->content) != 1)
+			{
+				if (ps_rra(ps) == -1)
+					return (NULL);
+				ps_print_ps(2, ps);
+			}
+		}
+		if (ps_pa(ps) == -1)
+			return (NULL);
+	}
+	ps_print_ps(2, ps);
 	cmdlst = ps->cmdlst;
 	ps->cmdlst = NULL;
 	return (cmdlst);
