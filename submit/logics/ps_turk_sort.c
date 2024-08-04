@@ -40,6 +40,7 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 	int			min_rb_cnt;
 	t_list		*itr;
 
+	// stack aが3個以下になるまで、いい感じにstack bにプッシュする。
 	while (ft_lstsize(ps->stack_a->top) > 3)
 	{
 		min_ra_cnt = ft_lstsize(ps->stack_a->top);
@@ -114,6 +115,7 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 			return (NULL);
 	}
 	// ps_print_ps(2, ps);
+	// 最大値が一番上に来るようにスタックBを回転させる。
 	rb_cnt = ps_get_insert_pos_desc(ps->stack_b, -1);
 	while (rb_cnt > 0)
 	{
@@ -127,6 +129,7 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 			return (NULL);
 		rb_cnt++;
 	}
+	// スタックAをソートする。
 	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
 		return (NULL);
 	cmdlst = ps->cmdlst;
