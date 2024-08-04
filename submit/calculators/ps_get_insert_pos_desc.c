@@ -13,10 +13,6 @@
 #include "ps.h"
 #include "libft.h"
 
-int	ps_get_max_value(t_ps_stack *stack);
-int	ps_get_min_value(t_ps_stack *stack);
-int	ps_convert_min_pos(int pos, int size);
-
 /**
  * desc
  */
@@ -42,58 +38,4 @@ int	ps_get_insert_pos_desc(t_ps_stack *stack, int value)
 		pos++;
 	}
 	return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
-}
-
-int	ps_convert_min_pos(int pos, int size)
-{
-	if (pos <= size / 2)
-		return (pos);
-	else
-		return (pos - size);
-}
-
-int	ps_get_max_value(t_ps_stack *stack)
-{
-	t_iter	itr;
-	t_list	*lst;
-	int		value;
-	int		max;
-
-	if (stack->top == NULL)
-		return (0);
-	ft_lstinit_itr(stack->top, &itr);
-	lst = itr.current;
-	value = *(int *)lst->content;
-	max = value;
-	while (itr.has_next(&itr))
-	{
-		lst = itr.next(&itr);
-		value = *(int *)lst->content;
-		if (max < value)
-			max = value;
-	}
-	return (max);
-}
-
-int	ps_get_min_value(t_ps_stack *stack)
-{
-	t_iter	itr;
-	t_list	*lst;
-	int		value;
-	int		min;
-
-	if (stack->top == NULL)
-		return (0);
-	ft_lstinit_itr(stack->top, &itr);
-	lst = itr.current;
-	value = *(int *)lst->content;
-	min = value;
-	while (itr.has_next(&itr))
-	{
-		lst = itr.next(&itr);
-		value = *(int *)lst->content;
-		if (min > value)
-			min = value;
-	}
-	return (min);
 }

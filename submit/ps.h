@@ -47,6 +47,9 @@ int			ps_renumber(int *values, int size);
 int			*ps_str_to_int_array(const char *strs[], int size);
 int			ps_sort_for_three(t_push_swap *ps);
 int			ps_get_insert_pos_desc(t_ps_stack *stack, int value);
+int			ps_get_min_value(t_ps_stack *stack);
+int			ps_get_max_value(t_ps_stack *stack);
+int			ps_convert_min_pos(int pos, int size);
 
 t_ps_cmdlst	*ps_turk_sort(int *values, int size);
 t_ps_cmdlst	*ps_main(int argc, const char *argv[]);
