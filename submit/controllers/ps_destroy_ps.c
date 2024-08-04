@@ -15,6 +15,8 @@
 
 void	ps_destroy_ps(t_push_swap *ps)
 {
+	if (ps == NULL)
+		return ;
 	ps_destroy_cmdlst(ps->cmdlst);
 	ps_destroy_stack(ps->stack_a);
 	ps_destroy_stack(ps->stack_b);
