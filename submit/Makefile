@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/03 16:13:09 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/04 16:50:41 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ bonus: checker
 
 debug: LDFLAGS += -g -O0 -fsanitize=leak
 debug: CFLAGS  += -g -O0 -fsanitize=leak
-debug: re
+debug: $(NAME)
 
 include fony.mk
 include libs.mk
