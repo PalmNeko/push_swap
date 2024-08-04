@@ -33,7 +33,28 @@ t_ps_cmdlst	*ps_turk_sort(int *values, int size)
 t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 {
 	t_ps_cmdlst	*cmdlst;
+	int			pb_pos;
 
+	while (ft_lstsize(ps->stack_a->top) > 3)
+	{
+		ps_print_ps(2, ps);
+		pb_pos = ps_get_insert_pos_desc(ps->stack_b, *(int *)ps->stack_a->top->content);
+		while (pb_pos > 0)
+		{
+			if (ps_rb(ps) == -1)
+				return (NULL);
+			pb_pos--;
+		}
+		while (pb_pos < 0)
+		{
+			if (ps_rrb(ps) == -1)
+				return (NULL);
+			pb_pos++;
+		}
+		if (ps_pb(ps) == -1)
+			return (NULL);
+	}
+	ps_print_ps(2, ps);
 	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
 		return (NULL);
 	cmdlst = ps->cmdlst;
