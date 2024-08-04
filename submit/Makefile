@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/04 16:50:41 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/04 19:56:53 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(NAME): $(LIBS) $(OBJS)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 checker:
-	make -f checker.mk
+	# make -f checker.mk
 
 checker_clean:
 	make -f checker.mk clean
