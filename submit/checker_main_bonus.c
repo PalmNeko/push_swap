@@ -1,95 +1,122 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   checker_main_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:43:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/20 18:43:34 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:57:03 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ps.h"
 #include "libft.h"
 #include "get_next_line.h"
-#include "validators_bonus.h"
-#include "validators.h"
-#include "command_list.h"
-#include "logics_bonus.h"
-#include "logics.h"
-#include "printers.h"
-#include "stack.h"
+#include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-int				sort_by_commands(t_stack *a, t_command_list *commands);
-t_command_list	*read_instructions(int fd);
+int		ps_checker_main(int argc, char *argv[]);
+t_cmd	ps_get_command_function(const char *command);
+int		ps_sort_by_standard_input(t_push_swap *ps);
 
 int	main(int argc, char *argv[])
 {
-	t_stack			*input_stack;
-	t_command_list	*commands;
+	int result;
 
 	if (argc == 1)
 		return (0);
-	input_stack = generate_stack_strs_to(&argv[1], argc - 1);
-	if (input_stack == NULL)
-		return (print_error());
-	commands = read_instructions(0);
-	if (commands == NULL)
-		return (destroy_stack(input_stack), print_error());
-	if (sort_by_commands(input_stack, commands) == -1)
-		return (destroy_stack(input_stack), destroy_command_list(commands),
-			print_error());
-	if (validate_is_sorted(input_stack) == true)
+	result = ps_checker_main(argc, argv);
+	if (result == -1)
+	{
+		ps_print_error(2);
+		return (1);
+	}
+	else if (result == 0)
+	{
 		ft_putstr_fd("OK\n", 1);
-	else
+		return (0);
+	}
+	else {
 		ft_putstr_fd("NG\n", 1);
-	destroy_command_list(commands);
-	destroy_stack(input_stack);
+		return (1);
+	}
 	return (0);
 }
 
-int	sort_by_commands(t_stack *a, t_command_list *commands)
+int	ps_checker_main(int argc, char *argv[])
 {
-	t_stack	*b;
-	t_list	*iter;
+	int			*values;
+	int			size;
+	bool		is_sorted;
+	t_push_swap *ps;
 
-	b = create_stack(a->max_len);
-	if (b == NULL)
+	size = argc - 1;
+	values = ps_str_to_int_array(argv + 1, size);
+	if (values == NULL)
 		return (-1);
-	iter = commands->commands;
-	while (iter != NULL)
+	if (ps_validate_no_duplicates(values, size) == false)
+		return (free(values), -1);
+	ps = ps_new_ps(values, size);
+	free(values);
+	if (ps == NULL)
+		return (-1);
+	if (ps_sort_by_standard_input(ps) == -1)
+		return (ps_destroy_ps(ps), -1);
+	is_sorted = ps_validate_is_sorted(ps);
+	ps_destroy_ps(ps);
+	if (is_sorted == true)
+		return (0);
+	else
+		return (1);
+}
+
+int	ps_sort_by_standard_input(t_push_swap *ps)
+{
+	char	*carry_up;
+	char	*line;
+	t_cmd	cmd;
+
+	carry_up = NULL;
+	errno = 0;
+	line = get_next_line2(1, &carry_up);
+	while (line != NULL)
 	{
-		apply_order(a, b, iter->content);
-		iter = iter->next;
+		ft_replace_last_newline(line);
+		cmd = ps_get_command_function(line);
+		free(line);
+		if (cmd == NULL)
+			return (free(carry_up), -1);
+		if (cmd(ps) == -1)
+			return (free(carry_up), -1);
+		line = get_next_line2(1, &carry_up);
 	}
-	destroy_stack(b);
+	free(carry_up);
+	if (errno != 0)
+		return (-1);
 	return (0);
 }
 
-t_command_list	*read_instructions(int fd)
+t_cmd	ps_get_command_function(const char *command)
 {
-	t_command_list	*commands;
-	char			*instruction;
-	char			*find_ptr;
+	const char	*cmp_str[] = {
+		"sa", "pa", "ra", "rra",
+		"sb", "pb", "rb", "rrb",
+		"ss", "rr", "rrr"
+	};
+	const t_cmd	ret_funcs[] = {
+		ps_sa, ps_pa, ps_ra, ps_rra,
+		ps_sb, ps_pb, ps_rb, ps_rrb,
+		ps_ss, ps_rr, ps_rrr
+	};
+	int	index;
 
-	commands = create_command_list();
-	if (commands == NULL)
-		return (NULL);
-	instruction = get_next_line(fd);
-	while (instruction != NULL)
+	index = 0;
+	while (index < 11)
 	{
-		find_ptr = ft_strrchr(instruction, '\n');
-		if (find_ptr == NULL)
-			return (free(instruction), NULL);
-		*find_ptr = '\0';
-		if (validate_instruction_format(instruction) == false)
-			return (free(instruction), destroy_command_list(commands), NULL);
-		if (commands->append(commands, instruction) == NULL)
-			return (free(instruction), destroy_command_list(commands), NULL);
-		free(instruction);
-		instruction = get_next_line(fd);
+		if (ft_strcmp(cmp_str[index], command) == 0)
+			return (ret_funcs[index]);
 	}
-	return (commands);
+	return (NULL);
 }

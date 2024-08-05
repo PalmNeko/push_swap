@@ -42,6 +42,7 @@ int			ps_sb(t_push_swap *ps);
 int			ps_ss(t_push_swap *ps);
 
 bool		ps_validate_no_duplicates(int *values, size_t len);
+bool		ps_validate_is_sorted(t_push_swap *ps);
 
 int			ps_renumber(int *values, int size);
 int			*ps_str_to_int_array(const char *strs[], int size);
