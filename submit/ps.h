@@ -60,13 +60,12 @@ int			ps_rotate_a_to_asc(t_push_swap *ps);
 int			ps_push_to_a_until_zero(t_push_swap *ps);
 int			ps_rotate_b_to_desc(t_push_swap *ps);
 int			ps_push_to_b_until_three(t_push_swap *ps);
-t_ps_cmdlst	*ps_turk_sort(int *values, int size);
 t_ps_cmdlst	*ps_main(int argc, const char *argv[]);
 void		ps_print_cmdlst(int fd, t_ps_cmdlst *cmdlst);
 void		ps_print_error(int fd);
 void		ps_print_ps(int fd, t_push_swap *ps);
 t_ps_cmdlst	*ps_push_swap_sort(int *values, int size);
 
-t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps);
+t_ps_cmdlst	*ps_turk_sort(t_push_swap *ps);
 
 #endif

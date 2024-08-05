@@ -15,7 +15,7 @@
 #include <limits.h>
 #include <stdlib.h>
 
-t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
+t_ps_cmdlst	*ps_turk_sort(t_push_swap *ps)
 {
 	t_ps_cmdlst	*cmdlst;
 
