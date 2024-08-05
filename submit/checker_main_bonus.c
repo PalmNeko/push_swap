@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:43:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/05 13:46:29 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:51:43 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ps_sort_by_standard_input(t_push_swap *ps);
 
 int	main(int argc, const char *argv[])
 {
-	int result;
+	int	result;
 
 	if (argc == 1)
 		return (0);
@@ -38,7 +38,8 @@ int	main(int argc, const char *argv[])
 		ft_putstr_fd("OK\n", 1);
 		return (0);
 	}
-	else {
+	else
+	{
 		ft_putstr_fd("NG\n", 1);
 		return (1);
 	}
@@ -50,7 +51,7 @@ int	ps_checker_main(int argc, const char *argv[])
 	int			*values;
 	int			size;
 	bool		is_sorted;
-	t_push_swap *ps;
+	t_push_swap	*ps;
 
 	size = argc - 1;
 	values = ps_str_to_int_array(argv + 1, size);
@@ -112,7 +113,7 @@ t_cmd	ps_get_command_function(const char *command)
 		ps_sb, ps_pb, ps_rb, ps_rrb,
 		ps_ss, ps_rr, ps_rrr
 	};
-	int	index;
+	int			index;
 
 	index = 0;
 	while (index < 11)
