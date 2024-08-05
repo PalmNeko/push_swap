@@ -57,7 +57,7 @@ int	ps_checker_main(int argc, const char *argv[])
 	if (values == NULL)
 		return (-1);
 	if (ps_validate_no_duplicates(values, size) == false)
-return (free(values), -1);
+		return (free(values), -1);
 	if (ps_renumber(values, size) == -1)
 		return (free(values), -1);
 	ps = ps_new_ps(values, size);
@@ -119,6 +119,7 @@ t_cmd	ps_get_command_function(const char *command)
 	{
 		if (ft_strcmp(cmp_str[index], command) == 0)
 			return (ret_funcs[index]);
+		index++;
 	}
 	return (NULL);
 }
