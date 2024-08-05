@@ -25,7 +25,13 @@ t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 
 	if (ps_init_push_swap_sort(values, size, &ps) == -1)
 		return (NULL);
-	cmdlst = ps_turk_sort(ps);
+	if (ps_turk_sort(ps) == 0)
+	{
+		cmdlst = ps->cmdlst;
+		ps->cmdlst = NULL;
+	}
+	else
+		cmdlst = NULL;
 	ps_finalize_push_swap_sort(&ps);
 	return (cmdlst);
 }

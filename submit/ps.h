@@ -66,6 +66,7 @@ void		ps_print_error(int fd);
 void		ps_print_ps(int fd, t_push_swap *ps);
 t_ps_cmdlst	*ps_push_swap_sort(int *values, int size);
 
-t_ps_cmdlst	*ps_turk_sort(t_push_swap *ps);
+int			ps_turk_sort(t_push_swap *ps);
+int			ps_quick_sort(t_push_swap *ps);
 
 #endif
