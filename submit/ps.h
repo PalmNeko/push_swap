@@ -65,5 +65,8 @@ t_ps_cmdlst	*ps_main(int argc, const char *argv[]);
 void		ps_print_cmdlst(int fd, t_ps_cmdlst *cmdlst);
 void		ps_print_error(int fd);
 void		ps_print_ps(int fd, t_push_swap *ps);
+t_ps_cmdlst	*ps_push_swap_sort(int *values, int size);
+
+t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps);
 
 #endif

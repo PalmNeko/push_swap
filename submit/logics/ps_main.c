@@ -25,7 +25,7 @@ t_ps_cmdlst	*ps_main(int argc, const char *argv[])
 	values = ps_str_to_int_array(argv + 1, size);
 	if (values == NULL)
 		return (NULL);
-	cmdlst = ps_turk_sort(values, size);
+	cmdlst = ps_push_swap_sort(values, size);
 	free(values);
 	return (cmdlst);
 }
