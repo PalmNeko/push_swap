@@ -17,17 +17,7 @@ int	ps_rotate_b_to_desc(t_push_swap *ps)
 	int			rb_cnt;
 
 	rb_cnt = ps_get_insert_pos_desc(ps->stack_b, -1);
-	while (rb_cnt > 0)
-	{
-		if (ps_rb(ps) == -1)
-			return (-1);
-		rb_cnt--;
-	}
-	while (rb_cnt < 0)
-	{
-		if (ps_rrb(ps) == -1)
-			return (-1);
-		rb_cnt++;
-	}
+	if (ps_rotate_two_way(ps, ps_rb, ps_rrb, rb_cnt) == -1)
+		return (-1);
 	return (0);
 }
