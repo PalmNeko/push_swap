@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_types.h                                         :+:      :+:    :+:   */
+/*   ps_rotate_two_way.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 16:21:49 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 16:21:49 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/08/04 23:20:22 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/08/04 23:20:22 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_TYPES_H
-# define PS_TYPES_H
+#include "ps.h"
 
-# include "libft.h"
-
-typedef struct s_ps_stack {
-	t_list	*top;
-	int		size;
-}	t_ps_stack;
-
-typedef struct s_ps_cmdlst {
-	t_list	*top;
-}	t_ps_cmdlst;
-
-typedef struct s_push_swap {
-	t_ps_cmdlst	*cmdlst;
-	t_ps_stack	*stack_a;
-	t_ps_stack	*stack_b;
-}	t_push_swap;
-
-typedef int (*t_cmd)(t_push_swap *);
-
-#endif
+int ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt)
+{
+	while (cnt > 0)
+	{
+		if (fr(ps) == -1)
+			return (-1);
+		cnt--;
+	}
+	while (cnt < 0)
+	{
+		if (frr(ps) == -1)
+			return (-1);
+		cnt++;
+	}
+	return (0);
+}
