@@ -16,7 +16,7 @@
 
 static void	ps_print_stacks(int fd, t_list *a, t_list *b, int max);
 static void	ps_console_color_with_max(int fd, int value, int max);
-static void ps_console_color(int fd, int h, bool reset);
+static void	ps_console_color(int fd, int h, bool reset);
 static int	ps_to_rgb(int h, int s, int v);
 
 void	ps_print_ps(int fd, t_push_swap *ps)
@@ -43,7 +43,7 @@ void	ps_print_ps(int fd, t_push_swap *ps)
 
 static void	ps_print_stacks(int fd, t_list *a, t_list *b, int max)
 {
-	int value;
+	int	value;
 
 	if (a != NULL)
 	{
@@ -75,9 +75,9 @@ static void	ps_console_color_with_max(int fd, int value, int max)
 	return ;
 }
 
-static void ps_console_color(int fd, int h, bool reset)
+static void	ps_console_color(int fd, int h, bool reset)
 {
-	int	rgb;
+	int				rgb;
 	unsigned char	colors[3];
 
 	if (reset == true)
@@ -99,21 +99,21 @@ static void ps_console_color(int fd, int h, bool reset)
  */
 static int	ps_to_rgb(int h, int s, int v)
 {
-	int	max;
-	int	min;
+	int				max;
+	int				min;
 	unsigned char	**rgb_values;
-	int	index;
-	int	result;
+	int				index;
+	int				result;
 
 	max = v;
 	min = max - ((s / 255.0) * max);
 	index = h / 60;
-	rgb_values = (unsigned char *[]) {
+	rgb_values = (unsigned char *[]){
 		(unsigned char []){max, (h / 60.0) * (max - min) + min, min},
-		(unsigned char []){((120 - h) / 60.0) * (max - min) + min, max, min},
+		(unsigned char []){((120 - h) / 60.0) *(max - min) + min, max, min},
 		(unsigned char []){min, max, ((h - 120) / 60.0) * (max - min) + min},
 		(unsigned char []){min, ((240 - h) / 60.0) * (max - min) + min, max},
-		(unsigned char []){((h - 240) / 60.0) * (max - min) + min, min , max},
+		(unsigned char []){((h - 240) / 60.0) *(max - min) + min, min, max},
 		(unsigned char []){max, min, ((360 - h) / 60.0) * (max - min) + min},
 	};
 	result = 0;

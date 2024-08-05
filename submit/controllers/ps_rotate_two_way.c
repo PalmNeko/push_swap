@@ -12,7 +12,7 @@
 
 #include "ps.h"
 
-int ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt)
+int	ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt)
 {
 	while (cnt > 0)
 	{

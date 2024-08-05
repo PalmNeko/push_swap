@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static int cmp_int(const void *a, const void *b);
+static int	cmp_int(const void *a, const void *b);
 
 int	ps_renumber(int *values, int size)
 {
@@ -27,8 +27,8 @@ int	ps_renumber(int *values, int size)
 		return (-1);
 	ft_memcpy(copy, values, sizeof(int) * size);
 	ft_selection_sort(copy, size, sizeof(int), cmp_int);
-	b_arg = (t_bsearch_arg) {.base = copy, .compar = cmp_int,
-			.size = sizeof(int), .nmemb = size};
+	b_arg = (t_bsearch_arg){.base = copy, .compar = cmp_int,
+		.size = sizeof(int), .nmemb = size};
 	index = 0;
 	while (index < size)
 	{
@@ -42,7 +42,7 @@ int	ps_renumber(int *values, int size)
 	return (0);
 }
 
-static int cmp_int(const void *a, const void *b)
+static int	cmp_int(const void *a, const void *b)
 {
 	if (*(int *)a < *(int *)b)
 		return (-1);

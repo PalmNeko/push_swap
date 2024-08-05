@@ -41,7 +41,7 @@ int			ps_sa(t_push_swap *ps);
 int			ps_sb(t_push_swap *ps);
 int			ps_ss(t_push_swap *ps);
 
-bool	ps_validate_no_duplicates(int *values, size_t len);
+bool		ps_validate_no_duplicates(int *values, size_t len);
 
 int			ps_renumber(int *values, int size);
 int			*ps_str_to_int_array(const char *strs[], int size);
@@ -53,7 +53,7 @@ int			ps_get_max_value(t_ps_stack *stack);
 int			ps_convert_min_pos(int pos, int size);
 
 int			ps_run_to_times(t_push_swap *ps, int (*f)(t_push_swap *), int cnt);
-int 		ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt);
+int			ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt);
 int			ps_rotate_a_to_asc(t_push_swap *ps);
 int			ps_push_to_a_until_zero(t_push_swap *ps);
 int			ps_rotate_b_to_desc(t_push_swap *ps);

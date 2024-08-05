@@ -16,7 +16,7 @@
 int	ps_sort_for_three(t_push_swap *ps)
 {
 	int	max;
-	int min;
+	int	min;
 	int	first;
 	int	second;
 	int	third;

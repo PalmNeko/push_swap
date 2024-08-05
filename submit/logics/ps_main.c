@@ -15,7 +15,7 @@
 
 t_ps_cmdlst	*ps_main(int argc, const char *argv[])
 {
-	int 		*values;
+	int			*values;
 	int			size;
 	t_ps_cmdlst	*cmdlst;
 

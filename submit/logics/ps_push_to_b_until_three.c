@@ -35,7 +35,7 @@ int	ps_push_to_b_until_three(t_push_swap *ps)
 	return (0);
 }
 
-void update_min_counts(
+void	update_min_counts(
 		t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step)
 {
 	int		ra_cnt;
@@ -47,7 +47,8 @@ void update_min_counts(
 	while (ft_abs(ra_cnt) < ft_abs(*min_ra_cnt) + ft_abs(*min_rb_cnt))
 	{
 		rb_cnt = ps_get_insert_pos_desc(ps->stack_b, *(int *)itr->content);
-		if (ft_abs(rb_cnt) + ft_abs(ra_cnt) < ft_abs(*min_ra_cnt) + ft_abs(*min_rb_cnt))
+		if (ft_abs(rb_cnt) + ft_abs(ra_cnt)
+			< ft_abs(*min_ra_cnt) + ft_abs(*min_rb_cnt))
 		{
 			*min_ra_cnt = ra_cnt;
 			*min_rb_cnt = rb_cnt;
@@ -63,7 +64,6 @@ void update_min_counts(
 
 int	ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b)
 {
-	// min_rb_cntとmin_ra_cntで符号が違う場合は、どちらに合わせたほうがより良いかを判定する。
 	while (rotate_a > 0 && rotate_b > 0)
 	{
 		if (ps_rr(ps) == -1)

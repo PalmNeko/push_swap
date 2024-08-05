@@ -30,6 +30,6 @@ typedef struct s_push_swap {
 	t_ps_stack	*stack_b;
 }	t_push_swap;
 
-typedef int (*t_cmd)(t_push_swap *);
+typedef int	(*t_cmd)(t_push_swap *);
 
 #endif
