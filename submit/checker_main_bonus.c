@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:43:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/05 11:57:03 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:46:29 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		ps_checker_main(int argc, char *argv[]);
+int		ps_checker_main(int argc, const char *argv[]);
 t_cmd	ps_get_command_function(const char *command);
 int		ps_sort_by_standard_input(t_push_swap *ps);
 
-int	main(int argc, char *argv[])
+int	main(int argc, const char *argv[])
 {
 	int result;
 
@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-int	ps_checker_main(int argc, char *argv[])
+int	ps_checker_main(int argc, const char *argv[])
 {
 	int			*values;
 	int			size;
@@ -57,6 +57,8 @@ int	ps_checker_main(int argc, char *argv[])
 	if (values == NULL)
 		return (-1);
 	if (ps_validate_no_duplicates(values, size) == false)
+return (free(values), -1);
+	if (ps_renumber(values, size) == -1)
 		return (free(values), -1);
 	ps = ps_new_ps(values, size);
 	free(values);
@@ -80,7 +82,7 @@ int	ps_sort_by_standard_input(t_push_swap *ps)
 
 	carry_up = NULL;
 	errno = 0;
-	line = get_next_line2(1, &carry_up);
+	line = get_next_line2(0, &carry_up);
 	while (line != NULL)
 	{
 		ft_replace_last_newline(line);
@@ -90,7 +92,7 @@ int	ps_sort_by_standard_input(t_push_swap *ps)
 			return (free(carry_up), -1);
 		if (cmd(ps) == -1)
 			return (free(carry_up), -1);
-		line = get_next_line2(1, &carry_up);
+		line = get_next_line2(0, &carry_up);
 	}
 	free(carry_up);
 	if (errno != 0)
