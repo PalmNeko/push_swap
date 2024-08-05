@@ -39,7 +39,7 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 		return (NULL);
 	if (ps_rotate_b_to_desc(ps) == -1)
 		return (NULL);
-	if (ft_lstsize(ps->stack_a->top) == 3 && ps_sort_for_three(ps) == -1)
+	if (ps_sort_for_three(ps) == -1)
 		return (NULL);
 	if (ps_push_to_a_until_zero(ps) == -1)
 		return (NULL);
