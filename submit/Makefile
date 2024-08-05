@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/04 19:56:53 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/05 13:23:55 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,12 @@ FCLEAN_FILES = $(NAME)
 
 all: $(NAME) bonus
 
-bonus: checker
+bonus:
+	$(MAKE) -f checker.mk
 
 debug: LDFLAGS += -g -O0 -fsanitize=leak
 debug: CFLAGS  += -g -O0 -fsanitize=leak
-debug: $(NAME)
+debug: all
 
 include fony.mk
 include libs.mk
@@ -43,9 +44,6 @@ $(NAME): $(LIBS) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
-
-checker:
-	# make -f checker.mk
 
 checker_clean:
 	make -f checker.mk clean
