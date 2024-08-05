@@ -44,11 +44,11 @@ void	update_min_counts(
 
 	ra_cnt = 0;
 	itr = ps->stack_a->top;
-	while (ft_abs(ra_cnt) < ft_abs(*min_ra_cnt) + ft_abs(*min_rb_cnt))
+	while (ft_abs(ra_cnt) < ps_calc_rotate_cost(*min_ra_cnt, *min_rb_cnt))
 	{
 		rb_cnt = ps_get_insert_pos_desc(ps->stack_b, *(int *)itr->content);
-		if (ft_abs(rb_cnt) + ft_abs(ra_cnt)
-			< ft_abs(*min_ra_cnt) + ft_abs(*min_rb_cnt))
+		if (ps_calc_rotate_cost(ra_cnt, rb_cnt)
+			< ps_calc_rotate_cost(*min_ra_cnt, *min_rb_cnt))
 		{
 			*min_ra_cnt = ra_cnt;
 			*min_rb_cnt = rb_cnt;

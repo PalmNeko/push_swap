@@ -52,6 +52,7 @@ int			ps_get_insert_pos_asc(t_ps_stack *stack, int value);
 int			ps_get_min_value(t_ps_stack *stack);
 int			ps_get_max_value(t_ps_stack *stack);
 int			ps_convert_min_pos(int pos, int size);
+int			ps_calc_rotate_cost(int rotate_a, int rotate_b);
 
 int			ps_run_to_times(t_push_swap *ps, int (*f)(t_push_swap *), int cnt);
 int			ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt);
