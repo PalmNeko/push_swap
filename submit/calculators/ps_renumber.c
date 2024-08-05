@@ -39,6 +39,7 @@ int	ps_renumber(int *values, int size)
 		values[index] = (int)(result - copy);
 		index++;
 	}
+	free(copy);
 	return (0);
 }
 

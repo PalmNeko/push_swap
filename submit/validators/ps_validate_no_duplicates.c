@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 00:02:37 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/03 11:34:51 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/05 13:11:05 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ bool	ps_validate_no_duplicates(int *values, size_t len)
 		pre_value = copy_values[index];
 		index++;
 	}
+	free(copy_values);
 	return (true);
 }
