@@ -45,7 +45,6 @@ t_ps_cmdlst	*ps_solve_with_turk_sort(t_push_swap *ps)
 		return (NULL);
 	if (ps_rotate_a_to_asc(ps) == -1)
 		return (NULL);
-	ps_print_ps(2, ps);
 	cmdlst = ps->cmdlst;
 	ps->cmdlst = NULL;
 	return (cmdlst);

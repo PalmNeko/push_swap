@@ -18,7 +18,6 @@ int	ps_push_to_a_until_zero(t_push_swap *ps)
 
 	while (ft_lstsize(ps->stack_b->top) > 0)
 	{
-		ps_print_ps(2, ps);
 		ra_cnt = ps_get_insert_pos_asc(
 				ps->stack_a, *(int *)ps->stack_b->top->content);
 		if (ps_rotate_two_way(ps, ps_ra, ps_rra, ra_cnt) == -1)
