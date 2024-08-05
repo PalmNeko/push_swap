@@ -22,10 +22,14 @@ t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 {
 	t_push_swap	*ps;
 	t_ps_cmdlst	*cmdlst;
+	int			sort_result;
 
 	if (ps_init_push_swap_sort(values, size, &ps) == -1)
 		return (NULL);
-	if (ps_turk_sort(ps) == 0)
+	sort_result = 0;
+	if (ps_validate_is_sorted(ps) == false)
+		sort_result = ps_turk_sort(ps);
+	if (sort_result == 0)
 	{
 		cmdlst = ps->cmdlst;
 		ps->cmdlst = NULL;
