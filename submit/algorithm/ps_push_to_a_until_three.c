@@ -13,8 +13,10 @@
 #include "ps.h"
 
 int		ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b);
-void	update_min_counts_a(
-			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step, int min);
+void	update_min_counts_a_rotate(
+			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int min);
+void	update_min_counts_a_reverse(
+			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int min);
 
 int	ps_push_to_a_until_three(t_push_swap *ps)
 {
@@ -33,8 +35,8 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 		max_b = ps_get_max_value(ps->stack_b);
 		if (unit1 * cnt >= max_b)
 			cnt -= 1;
-		update_min_counts_a(ps, &min_ra_cnt, &min_rb_cnt, 1, unit1 * cnt);
-		update_min_counts_a(ps, &min_ra_cnt, &min_rb_cnt, -1, unit1 * cnt);
+		update_min_counts_a_rotate(ps, &min_ra_cnt, &min_rb_cnt, unit1 * cnt);
+		update_min_counts_a_reverse(ps, &min_ra_cnt, &min_rb_cnt, unit1 * cnt);
 		if (ps_rotate_two_stack(ps, min_ra_cnt, min_rb_cnt) == -1)
 			return (-1);
 		if (ps_pa(ps) == -1)
@@ -43,8 +45,8 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 	return (0);
 }
 
-void	update_min_counts_a(
-		t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step, int min)
+void	update_min_counts_a_rotate(
+		t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int min)
 {
 	int		ra_cnt;
 	int		rb_cnt;
@@ -63,11 +65,34 @@ void	update_min_counts_a(
 			*min_ra_cnt = ra_cnt;
 			*min_rb_cnt = rb_cnt;
 		}
-		if (step > 0)
-			itr = itr->next;
-		else
+		itr = itr->next;
+		rb_cnt += 1;
+	}
+	return ;
+}
+
+void	update_min_counts_a_reverse(
+		t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int min)
+{
+	int		ra_cnt;
+	int		rb_cnt;
+	int		value;
+	t_list	*itr;
+
+	rb_cnt = 0;
+	itr = ps->stack_b->top;
+	while (ft_abs(rb_cnt) < ps_calc_rotate_cost(*min_ra_cnt, *min_rb_cnt))
+	{
+		value = *(int *)itr->content;
+		ra_cnt = ps_get_insert_pos_asc(ps->stack_a, value);
+		if (value >= min && ps_calc_rotate_cost(ra_cnt, rb_cnt)
+			< ps_calc_rotate_cost(*min_ra_cnt, *min_rb_cnt))
+		{
+			*min_ra_cnt = ra_cnt;
+			*min_rb_cnt = rb_cnt;
+		}
 			itr = itr->prev;
-		rb_cnt += step;
+		rb_cnt += -1;
 	}
 	return ;
 }

@@ -15,8 +15,8 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int			ps_init_push_swap_sort(const int *values, int size, t_push_swap **ps);
-void		ps_finalize_push_swap_sort(t_push_swap **ps);
+int		ps_init_push_swap_sort(const int *values, int size, t_push_swap **ps);
+void	ps_finalize_push_swap_sort(t_push_swap **ps);
 
 t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 {
