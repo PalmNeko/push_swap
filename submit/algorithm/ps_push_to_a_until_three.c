@@ -14,19 +14,27 @@
 
 int		ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b);
 void	update_min_counts_a(
-			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step);
+			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step, int min);
 
 int	ps_push_to_a_until_three(t_push_swap *ps)
 {
 	int			min_ra_cnt;
 	int			min_rb_cnt;
+	int			max_b;
+	int			cnt;
+	int			unit1;
 
+	unit1 = (ft_lstsize(ps->stack_a->top) + ft_lstsize(ps->stack_b->top)) / 6;
+	cnt = 5;
 	while (ft_lstsize(ps->stack_b->top) > 0)
 	{
 		min_ra_cnt = ft_lstsize(ps->stack_a->top);
 		min_rb_cnt = ft_lstsize(ps->stack_b->top);
-		update_min_counts_a(ps, &min_ra_cnt, &min_rb_cnt, 1);
-		update_min_counts_a(ps, &min_ra_cnt, &min_rb_cnt, -1);
+		max_b = ps_get_max_value(ps->stack_b);
+		if (unit1 * cnt >= max_b)
+			cnt -= 1;
+		update_min_counts_a(ps, &min_ra_cnt, &min_rb_cnt, 1, unit1 * cnt);
+		update_min_counts_a(ps, &min_ra_cnt, &min_rb_cnt, -1, unit1 * cnt);
 		if (ps_rotate_two_stack(ps, min_ra_cnt, min_rb_cnt) == -1)
 			return (-1);
 		if (ps_pa(ps) == -1)
@@ -36,18 +44,20 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 }
 
 void	update_min_counts_a(
-		t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step)
+		t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step, int min)
 {
 	int		ra_cnt;
 	int		rb_cnt;
+	int		value;
 	t_list	*itr;
 
 	rb_cnt = 0;
 	itr = ps->stack_b->top;
 	while (ft_abs(rb_cnt) < ps_calc_rotate_cost(*min_ra_cnt, *min_rb_cnt))
 	{
-		ra_cnt = ps_get_insert_pos_asc(ps->stack_a, *(int *)itr->content);
-		if (ps_calc_rotate_cost(ra_cnt, rb_cnt)
+		value = *(int *)itr->content;
+		ra_cnt = ps_get_insert_pos_asc(ps->stack_a, value);
+		if (value >= min && ps_calc_rotate_cost(ra_cnt, rb_cnt)
 			< ps_calc_rotate_cost(*min_ra_cnt, *min_rb_cnt))
 		{
 			*min_ra_cnt = ra_cnt;
