@@ -61,26 +61,3 @@ void	update_min_counts(
 	}
 	return ;
 }
-
-int	ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b)
-{
-	while (rotate_a > 0 && rotate_b > 0)
-	{
-		if (ps_rr(ps) == -1)
-			return (-1);
-		rotate_a--;
-		rotate_b--;
-	}
-	while (rotate_a < 0 && rotate_b < 0)
-	{
-		if (ps_rrr(ps) == -1)
-			return (-1);
-		rotate_a++;
-		rotate_b++;
-	}
-	if (ps_rotate_two_way(ps, ps_rb, ps_rrb, rotate_b) == -1)
-		return (-1);
-	if (ps_rotate_two_way(ps, ps_ra, ps_rra, rotate_a) == -1)
-		return (-1);
-	return (0);
-}
