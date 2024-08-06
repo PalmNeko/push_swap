@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/05 13:23:55 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/06 17:41:20 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,12 @@ all: $(NAME) bonus
 bonus:
 	$(MAKE) -f checker.mk
 
+test: clean debug push_swap_tester checker
+	norminette *.c */*.c *.h | grep -v OK
+	echo "brief test" && ./test.sh
+	echo "100 random test 200 times" && cd push_swap_tester && python3 push_swap_tester.py -l 100 -c 200
+	echo "500 random test 200 times" && cd push_swap_tester && python3 push_swap_tester.py -l 500 -c 200
+
 debug: LDFLAGS += -g -O0 -fsanitize=leak
 debug: CFLAGS  += -g -O0 -fsanitize=leak
 debug: all
@@ -50,6 +56,11 @@ checker_clean:
 
 checker_fclean:
 	make -f checker.mk fclean
+
+checker: bonus
+
+push_swap_tester:
+	git clone https://github.com/nafuka11/push_swap_tester.git
 
 clean:  checker_clean
 fclean: checker_clean
