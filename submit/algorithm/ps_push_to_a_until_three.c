@@ -27,7 +27,8 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 	int			cnt;
 	int			unit1;
 
-	unit1 = (ft_lstsize(ps->stack_a->top) + ft_lstsize(ps->stack_b->top)) / SPLIT_CNT;
+	unit1 = (ft_lstsize(ps->stack_a->top)
+			+ ft_lstsize(ps->stack_b->top)) / SPLIT_CNT;
 	cnt = SPLIT_CNT - 1;
 	while (ft_lstsize(ps->stack_b->top) > 0)
 	{
