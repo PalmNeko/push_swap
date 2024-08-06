@@ -24,6 +24,10 @@ int			ps_push_stack(t_ps_stack *stack, int value);
 void		ps_swap_stack(const	t_ps_stack *stack);
 
 /** command */
+t_list		*ps_new_command(const char *command);
+void		ps_destroy_command(t_list *command);
+
+/** command list */
 int			ps_append_cmdlst(t_ps_cmdlst *cmdlst, const char *command);
 void		ps_destroy_cmdlst(t_ps_cmdlst *cmdlst);
 t_list		*ps_get_cmdlst(t_ps_cmdlst *cmdlst, int n);

@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_append_cmdlst.c                                 :+:      :+:    :+:   */
+/*   ps_destroy_command.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 17:26:57 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/07/31 17:26:57 by tookuyam         ###   ########.fr       */
+/*   Created: 2024/08/06 18:38:57 by tookuyam          #+#    #+#             */
+/*   Updated: 2024/08/06 18:38:57 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ps.h"
+#include "libft.h"
 #include <stdlib.h>
 
-int	ps_append_cmdlst(t_ps_cmdlst *cmdlst, const char *command)
+void	ps_destroy_command(t_list *command)
 {
-	char	*dup_str;
-	t_list	*append_lst;
-
-	append_lst = ps_new_command(command);
-	if (append_lst == NULL)
-		return (-1);
-	ft_lstadd_back(&cmdlst->top, append_lst);
-	return (0);
+	if (command == NULL)
+		return ;
+	ft_lstdelone(command, free);
+	return ;
 }
