@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ps.h"
+#include "ps_conf.h"
 
 int		ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b);
 void	update_min_counts_a_rotate(
@@ -26,8 +27,8 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 	int			cnt;
 	int			unit1;
 
-	unit1 = (ft_lstsize(ps->stack_a->top) + ft_lstsize(ps->stack_b->top)) / 6;
-	cnt = 5;
+	unit1 = (ft_lstsize(ps->stack_a->top) + ft_lstsize(ps->stack_b->top)) / SPLIT_CNT;
+	cnt = SPLIT_CNT - 1;
 	while (ft_lstsize(ps->stack_b->top) > 0)
 	{
 		min_ra_cnt = ft_lstsize(ps->stack_a->top);
