@@ -23,7 +23,7 @@ else
 fi
 # NBR=$(seq 1 $NBR_COUNT | tr '\n' ' ' | rev | cut -c 2- | rev)
 CMD=$(./push_swap $NBR)
-echo "$CMD" | count_strings
+echo "$CMD" | count_strings >&2
 NBR_LINK=$( echo "$NBR" | tr ' ' ',' )
 CMD_LINK=$( echo "$CMD" | sed -e"s/rra/g/g" -e"s/rrb/h/g" \
 -e"s/rrr/i/g" -e"s/sa/a/g" -e"s/sb/b/g" -e"s/ss/c/g" \
@@ -32,6 +32,6 @@ CMD_COUNT=${#CMD_LINK}
 CHECKER="checker"
 RESULT=$( ./push_swap $NBR | ./"$CHECKER" $NBR 2>&1 )
 # RESULT=$( echo $CMD | ./checker $NBR 2>&1 ) # not work but i don't know why.<= on windows.
-echo "Operations: $CMD_COUNT"
-echo "Result $RESULT"
+echo "Operations: $CMD_COUNT" >&2
+echo "Result $RESULT" >&2
 echo "https://patrick-hacks.github.io/push-swap-pain/?&nbr=$NBR_LINK&cmd=$CMD_LINK"
