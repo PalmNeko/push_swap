@@ -15,7 +15,6 @@
 
 int	ps_append_cmdlst(t_ps_cmdlst *cmdlst, const char *command)
 {
-	char	*dup_str;
 	t_list	*append_lst;
 
 	append_lst = ps_new_command(command);

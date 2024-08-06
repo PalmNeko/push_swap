@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 t_list	*ps_new_command(const char *command)
 {
@@ -19,9 +20,9 @@ t_list	*ps_new_command(const char *command)
 
 	dup_str = ft_strdup(command);
 	if (dup_str == NULL)
-		return (-1);
+		return (NULL);
 	lst = ft_lstnew(dup_str);
 	if (lst == NULL)
-		return (free(dup_str), -1);
+		return (free(dup_str), NULL);
 	return (lst);
 }

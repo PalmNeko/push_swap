@@ -32,6 +32,7 @@ int			ps_append_cmdlst(t_ps_cmdlst *cmdlst, const char *command);
 void		ps_destroy_cmdlst(t_ps_cmdlst *cmdlst);
 t_list		*ps_get_cmdlst(t_ps_cmdlst *cmdlst, int n);
 t_ps_cmdlst	*ps_new_cmdlst(void);
+t_ps_cmdlst	*ps_clone_cmdlst(t_ps_cmdlst *cmdlst);
 
 /** push swap */
 void		ps_destroy_ps(t_push_swap *ps);
@@ -77,6 +78,7 @@ void		ps_print_cmdlst(int fd, t_ps_cmdlst *cmdlst);
 void		ps_print_error(int fd);
 void		ps_print_ps(int fd, t_push_swap *ps);
 t_ps_cmdlst	*ps_push_swap_sort(int *values, int size);
+t_ps_cmdlst	*ps_compress_rotate(t_ps_cmdlst *cmdlst);
 
 /** algorithm */
 int			ps_turk_sort(t_push_swap *ps);
