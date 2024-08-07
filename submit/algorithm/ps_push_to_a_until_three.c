@@ -23,19 +23,17 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 {
 	int			min_ra_cnt;
 	int			min_rb_cnt;
-	int			max_b;
+	int			offset;
 	int			cnt;
 	int			unit1;
 
-	unit1 = (ft_lstsize(ps->stack_a->top)
-			+ ft_lstsize(ps->stack_b->top)) / SPLIT_CNT;
+	unit1 = (ps->stack_a->size + ps->stack_b->size) / SPLIT_CNT;
 	cnt = SPLIT_CNT - 1;
-	while (ft_lstsize(ps->stack_b->top) > 0)
+	while (ps->stack_b->size > 0 && offset++)
 	{
-		min_ra_cnt = ft_lstsize(ps->stack_a->top);
-		min_rb_cnt = ft_lstsize(ps->stack_b->top);
-		max_b = ps_get_max_value(ps->stack_b);
-		if (unit1 * cnt >= max_b)
+		min_ra_cnt = ps->stack_a->size;
+		min_rb_cnt = ps->stack_b->size;
+		if (unit1 * cnt >= ps_get_max_value(ps->stack_b))
 			cnt -= 1;
 		update_min_counts_a_rotate(ps, &min_ra_cnt, &min_rb_cnt, unit1 * cnt);
 		update_min_counts_a_reverse(ps, &min_ra_cnt, &min_rb_cnt, unit1 * cnt);
