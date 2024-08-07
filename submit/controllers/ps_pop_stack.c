@@ -17,5 +17,7 @@ t_list	*ps_pop_stack(t_ps_stack *stack)
 	t_list	*pop_stack;
 
 	pop_stack = ft_lstpop(&(stack->top));
+	if (pop_stack != NULL)
+		stack->size -= 1;
 	return (pop_stack);
 }

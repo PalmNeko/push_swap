@@ -26,5 +26,6 @@ int	ps_push_stack(t_ps_stack *stack, int value)
 	if (new_node == NULL)
 		return (free(vptr), -1);
 	ft_lstpush(&stack->top, new_node);
+	stack->size += 1;
 	return (0);
 }
