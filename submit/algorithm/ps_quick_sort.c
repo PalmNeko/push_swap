@@ -16,11 +16,11 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int	split_five(t_push_swap *ps);
+int	ps_split_data(t_push_swap *ps, int split_cnt);
 
 int	ps_quick_sort(t_push_swap *ps)
 {
-	if (split_five(ps) == -1)
+	if (ps_split_data(ps, SPLIT_CNT) == -1)
 		return (-1);
 	while (ft_lstsize(ps->stack_a->top) > 2)
 	{
@@ -57,14 +57,14 @@ int	push_to_b_splitted(t_push_swap *ps, int min, int max)
 	return (0);
 }
 
-int	split_five(t_push_swap *ps)
+int	ps_split_data(t_push_swap *ps, int split_cnt)
 {
 	int			unit1;
 	int			cnt;
 
 	cnt = 0;
-	unit1 = ft_lstsize(ps->stack_a->top) / SPLIT_CNT;
-	while (cnt < SPLIT_CNT)
+	unit1 = ft_lstsize(ps->stack_a->top) / split_cnt;
+	while (cnt < split_cnt)
 	{
 		if (push_to_b_splitted(ps, unit1 * cnt, unit1 * (cnt + 2)) == -1)
 			return (0);
