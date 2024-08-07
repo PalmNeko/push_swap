@@ -32,7 +32,7 @@ int	ps_push_to_a_until(t_push_swap *ps, int split_cnt, int until)
 	{
 		min_ra_cnt = ps->stack_a->size;
 		min_rb_cnt = ps->stack_b->size;
-		if (unit1 * cnt >= ps_get_max_value(ps->stack_b))
+		if (unit1 * cnt > ps_get_max_value(ps->stack_b))
 			cnt -= 1;
 		update_min_counts_a_rotate(ps, &min_ra_cnt, &min_rb_cnt, unit1 * cnt);
 		update_min_counts_a_reverse(ps, &min_ra_cnt, &min_rb_cnt, unit1 * cnt);

@@ -64,7 +64,7 @@ int	push_to_b_splitted(t_push_swap *ps, int min, int max)
 		{
 			if (ps_pb(ps) == -1)
 				return (-1);
-			if (value > (min + max) / 2 && ps_rb(ps) == -1)
+			if (value >= (min + max) / 2 && ps_rb(ps) == -1)
 				return (-1);
 		}
 		else if (ps_ra(ps) == -1)
