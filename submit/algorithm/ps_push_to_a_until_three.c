@@ -23,13 +23,12 @@ int	ps_push_to_a_until(t_push_swap *ps, int split_cnt, int until)
 {
 	int			min_ra_cnt;
 	int			min_rb_cnt;
-	int			offset;
 	int			cnt;
 	int			unit1;
 
 	unit1 = (ps->stack_a->size + ps->stack_b->size) / split_cnt;
 	cnt = split_cnt - 1;
-	while (ps->stack_b->size > until && offset++)
+	while (ps->stack_b->size > until)
 	{
 		min_ra_cnt = ps->stack_a->size;
 		min_rb_cnt = ps->stack_b->size;
