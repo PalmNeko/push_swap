@@ -33,6 +33,10 @@ void		ps_destroy_cmdlst(t_ps_cmdlst *cmdlst);
 t_list		*ps_get_cmdlst(t_ps_cmdlst *cmdlst, int n);
 t_ps_cmdlst	*ps_new_cmdlst(void);
 t_ps_cmdlst	*ps_clone_cmdlst(t_ps_cmdlst *cmdlst);
+t_ps_cmdlst	*ps_compress_command(
+				t_ps_cmdlst *cmdlst,
+				char *const cmd_pattern[],
+				const char *replace_command);
 
 /** push swap */
 void		ps_destroy_ps(t_push_swap *ps);
