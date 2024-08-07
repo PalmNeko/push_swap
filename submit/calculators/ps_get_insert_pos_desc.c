@@ -34,11 +34,11 @@ int	ps_get_insert_pos_desc(t_ps_stack *stack, int value)
 		if ((max == *(int *)(lst->content)
 			&& min == *(int *)(lst->prev->content))
 			&& (value > max || value < min))
-			return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
+			return (ps_convert_min_pos(pos, stack->size));
 		else if (*(int *)(lst->prev->content) > value
 			&& value > *(int *)(lst->content))
-			return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
+			return (ps_convert_min_pos(pos, stack->size));
 		pos++;
 	}
-	return (ps_convert_min_pos(pos, ft_lstsize(stack->top)));
+	return (ps_convert_min_pos(pos, stack->size));
 }

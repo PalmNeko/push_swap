@@ -29,7 +29,7 @@ t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 	sort_result = 0;
 	if (ps_validate_is_sorted(ps) == false)
 	{
-		if (ft_lstsize(ps->stack_a->top) > 100)
+		if (ps->stack_a->size > 100)
 			sort_result = ps_quick_sort(ps);
 		else
 			sort_result = ps_turk_sort(ps);

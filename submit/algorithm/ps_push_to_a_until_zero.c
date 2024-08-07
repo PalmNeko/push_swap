@@ -16,7 +16,7 @@ int	ps_push_to_a_until_zero(t_push_swap *ps)
 {
 	int	ra_cnt;
 
-	while (ft_lstsize(ps->stack_b->top) > 0)
+	while (ps->stack_b->size > 0)
 	{
 		ra_cnt = ps_get_insert_pos_asc(
 				ps->stack_a, *(int *)ps->stack_b->top->content);

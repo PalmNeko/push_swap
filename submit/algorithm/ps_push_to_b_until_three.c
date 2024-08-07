@@ -21,10 +21,10 @@ int	ps_push_to_b_until_three(t_push_swap *ps)
 	int			min_ra_cnt;
 	int			min_rb_cnt;
 
-	while (ft_lstsize(ps->stack_a->top) > 15)
+	while (ps->stack_a->size > 15)
 	{
-		min_ra_cnt = ft_lstsize(ps->stack_a->top);
-		min_rb_cnt = ft_lstsize(ps->stack_b->top);
+		min_ra_cnt = ps->stack_a->size;
+		min_rb_cnt = ps->stack_b->size;
 		update_min_counts(ps, &min_ra_cnt, &min_rb_cnt, 1);
 		update_min_counts(ps, &min_ra_cnt, &min_rb_cnt, -1);
 		if (ps_rotate_two_stack(ps, min_ra_cnt, min_rb_cnt) == -1)

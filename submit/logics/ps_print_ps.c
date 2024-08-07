@@ -29,7 +29,7 @@ void	ps_print_ps(int fd, t_push_swap *ps)
 	ft_lstinit_itr(ps->stack_a->top, &itr_a);
 	ft_lstinit_itr(ps->stack_b->top, &itr_b);
 	index = 0;
-	max = ft_lstsize(ps->stack_a->top) + ft_lstsize(ps->stack_b->top) - 1;
+	max = ps->stack_a->size + ps->stack_b->size - 1;
 	ft_dprintf(fd, "%5s %10s %10s\n", "num", "stack_a", "stack_b");
 	while (itr_a.has_next(&itr_a) || itr_b.has_next(&itr_b))
 	{

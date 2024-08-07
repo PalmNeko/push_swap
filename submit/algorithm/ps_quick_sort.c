@@ -23,7 +23,7 @@ int	ps_quick_sort(t_push_swap *ps)
 {
 	if (ps_split_data(ps, SPLIT_CNT) == -1)
 		return (-1);
-	while (ft_lstsize(ps->stack_a->top) > 2)
+	while (ps->stack_a->size > 2)
 	{
 		if (ps_pb(ps) == -1)
 			return (-1);
@@ -41,7 +41,7 @@ int	ps_split_data(t_push_swap *ps, int split_cnt)
 	int			cnt;
 
 	cnt = 0;
-	unit1 = ft_lstsize(ps->stack_a->top) / split_cnt;
+	unit1 = ps->stack_a->size / split_cnt;
 	while (cnt < split_cnt)
 	{
 		if (push_to_b_splitted(ps, unit1 * cnt, unit1 * (cnt + 2)) == -1)
@@ -56,7 +56,7 @@ int	push_to_b_splitted(t_push_swap *ps, int min, int max)
 	int			value;
 	int			times;
 
-	times = ft_lstsize(ps->stack_a->top);
+	times = ps->stack_a->size;
 	while (times > 0)
 	{
 		value = *(int *)ps->stack_a->top->content;

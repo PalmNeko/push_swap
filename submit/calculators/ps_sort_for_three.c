@@ -21,7 +21,7 @@ int	ps_sort_for_three(t_push_swap *ps)
 	int	second;
 	int	third;
 
-	if (ft_lstsize(ps->stack_a->top) != 3)
+	if (ps->stack_a->size != 3)
 		return (0);
 	first = *(int *)ft_lstat(ps->stack_a->top, 0)->content;
 	second = *(int *)ft_lstat(ps->stack_a->top, 1)->content;
