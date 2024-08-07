@@ -19,7 +19,7 @@ void	update_min_counts_a_rotate(
 void	update_min_counts_a_reverse(
 			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int min);
 
-int	ps_push_to_a_until_three(t_push_swap *ps)
+int	ps_push_to_a_until(t_push_swap *ps, int split_cnt, int until)
 {
 	int			min_ra_cnt;
 	int			min_rb_cnt;
@@ -27,9 +27,9 @@ int	ps_push_to_a_until_three(t_push_swap *ps)
 	int			cnt;
 	int			unit1;
 
-	unit1 = (ps->stack_a->size + ps->stack_b->size) / SPLIT_CNT;
-	cnt = SPLIT_CNT - 1;
-	while (ps->stack_b->size > 0 && offset++)
+	unit1 = (ps->stack_a->size + ps->stack_b->size) / split_cnt;
+	cnt = split_cnt - 1;
+	while (ps->stack_b->size > until && offset++)
 	{
 		min_ra_cnt = ps->stack_a->size;
 		min_rb_cnt = ps->stack_b->size;
