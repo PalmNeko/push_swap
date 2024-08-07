@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:43:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/05 13:51:43 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:26:27 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int	ps_sort_by_standard_input(t_push_swap *ps)
 	line = get_next_line2(0, &carry_up);
 	while (line != NULL)
 	{
-		ft_replace_last_newline(line);
+		if (ft_replace_last_newline(line) == false)
+			return (free(carry_up), -1);
 		cmd = ps_get_command_function(line);
 		free(line);
 		if (cmd == NULL)
