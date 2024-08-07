@@ -21,7 +21,7 @@ int	ps_push_to_b_until_three(t_push_swap *ps)
 	int			min_ra_cnt;
 	int			min_rb_cnt;
 
-	while (ft_lstsize(ps->stack_a->top) > 5)
+	while (ft_lstsize(ps->stack_a->top) > 15)
 	{
 		min_ra_cnt = ft_lstsize(ps->stack_a->top);
 		min_rb_cnt = ft_lstsize(ps->stack_b->top);
