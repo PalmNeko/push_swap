@@ -90,7 +90,7 @@ int			ps_rotate_a_to_asc(t_push_swap *ps);
 int			ps_push_to_a_until_zero(t_push_swap *ps);
 int			ps_rotate_b_to_desc(t_push_swap *ps);
 int			ps_push_to_a_until(t_push_swap *ps, int split_cnt, int until);
-int			ps_push_to_b_until_three(t_push_swap *ps);
+int			ps_push_to_b_until(t_push_swap *ps, int until);
 t_ps_cmdlst	*ps_main(int argc, const char *argv[]);
 void		ps_print_cmdlst(int fd, t_ps_cmdlst *cmdlst);
 void		ps_print_error(int fd);

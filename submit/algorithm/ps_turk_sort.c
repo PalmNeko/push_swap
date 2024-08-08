@@ -17,7 +17,7 @@
 
 int	ps_turk_sort(t_push_swap *ps)
 {
-	if (ps_push_to_b_until_three(ps) == -1)
+	if (ps_push_to_b_until(ps, 15) == -1)
 		return (-1);
 	if (ps_rotate_b_to_desc(ps) == -1)
 		return (-1);

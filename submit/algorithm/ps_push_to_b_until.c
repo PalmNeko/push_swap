@@ -12,16 +12,15 @@
 
 #include "ps.h"
 
-int		ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b);
 void	update_min_counts(
 			t_push_swap *ps, int *min_ra_cnt, int *min_rb_cnt, int step);
 
-int	ps_push_to_b_until_three(t_push_swap *ps)
+int	ps_push_to_b_until(t_push_swap *ps, int until)
 {
 	int			min_ra_cnt;
 	int			min_rb_cnt;
 
-	while (ps->stack_a->size > 15)
+	while (ps->stack_a->size > until)
 	{
 		min_ra_cnt = ps->stack_a->size;
 		min_rb_cnt = ps->stack_b->size;
