@@ -30,7 +30,7 @@ t_ps_cmdlst	*ps_main(int argc, const char *argv[])
 	free(values);
 	if (cmdlst == NULL)
 		return (NULL);
-	compressed_cmdlst = ps_compress_rotate(cmdlst);
+	compressed_cmdlst = ps_compress_cmdlst(cmdlst);
 	ps_destroy_cmdlst(cmdlst);
 	return (compressed_cmdlst);
 }
