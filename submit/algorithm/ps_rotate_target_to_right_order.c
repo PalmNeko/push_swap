@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_rotate_target_to_right_sequence.c               :+:      :+:    :+:   */
+/*   ps_rotate_target_to_right_order.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ps.h"
 
-int	ps_rotate_target_to_right_sequence(t_push_swap *ps, t_target target)
+int	ps_rotate_target_to_right_order(t_push_swap *ps, t_target target)
 {
 	t_ps_stack	*stack;
 	int			(*get_insert_pos_func)(t_ps_stack *stack, int value);
