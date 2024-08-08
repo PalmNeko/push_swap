@@ -15,29 +15,15 @@
 
 t_ps_cmdlst	*ps_compress_rotate(t_ps_cmdlst *cmdlst)
 {
-	int			index;
-	t_ps_cmdlst	*new_cmdlst;
-	t_ps_cmdlst	*tmp_cmdlst;
-	char		***cmd_patterns;
-	char		**replace_cmds;
+	t_ps_cmdlst		*new_cmdlst;
+	char **const	*cmd_patterns = (char **[]){
+		(char *[]){"ra", "rb", NULL},
+		(char *[]){"rb", "ra", NULL},
+		(char *[]){"rra", "rrb", NULL},
+		(char *[]){"rrb", "rra", NULL}};
+	char *const		*replace_cmds = (char *[]){
+		"rr", "rr", "rrr", "rrr", NULL};
 
-	cmd_patterns = (char **[]){
-		(char *[]){"ra", "rb", NULL}, (char *[]){"rb", "ra", NULL},
-		(char *[]){"rra", "rrb", NULL}, (char *[]){"rrb", "rra", NULL}};
-	replace_cmds = (char *[]){"rr", "rr", "rrr", "rrr", NULL};
-	new_cmdlst = ps_clone_cmdlst(cmdlst);
-	if (new_cmdlst == NULL)
-		return (NULL);
-	index = 0;
-	while (index < 4)
-	{
-		tmp_cmdlst = ps_compress_command(
-				new_cmdlst, cmd_patterns[index], replace_cmds[index]);
-		ps_destroy_cmdlst(new_cmdlst);
-		if (tmp_cmdlst == NULL)
-			return (NULL);
-		new_cmdlst = tmp_cmdlst;
-		index++;
-	}
+	new_cmdlst = ps_compress_commands(cmdlst, cmd_patterns, replace_cmds, 4);
 	return (new_cmdlst);
 }
