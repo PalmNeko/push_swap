@@ -100,6 +100,7 @@ t_ps_cmdlst	*ps_compress_rotate(t_ps_cmdlst *cmdlst);
 int			ps_swap_target_stack_if_needed(t_push_swap *ps, t_target target);
 
 /** algorithm */
+int			ps_run_sort_seq(t_push_swap *ps, const t_cmd *f);
 int			ps_turk_sort(t_push_swap *ps);
 int			ps_quick_sort(t_push_swap *ps);
 int			ps_sort_between_3and5(t_push_swap *ps);
