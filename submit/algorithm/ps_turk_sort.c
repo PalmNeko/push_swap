@@ -25,7 +25,7 @@ int	ps_turk_sort(t_push_swap *ps)
 		return (-1);
 	if (ps_sort_to_serial_number_only_top_three(ps, PS_TA) == -1)
 		return (-1);
-	if (ps_push_to_a_until_zero(ps) == -1)
+	if (ps_push_to_target_at_sorted_place_until_remain(ps, PS_TA, 0) == -1)
 		return (-1);
 	if (ps_rotate_a_to_asc(ps) == -1)
 		return (-1);
