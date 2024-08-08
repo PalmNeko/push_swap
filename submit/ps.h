@@ -100,6 +100,8 @@ t_ps_cmdlst	*ps_compress_rotate(t_ps_cmdlst *cmdlst);
 int			ps_swap_target_stack_if_needed(t_push_swap *ps, t_target target);
 
 /** algorithm */
+int			ps_rotate_target_to_right_sequence(
+				t_push_swap *ps, t_target target);
 int			ps_push_to_target_at_sorted_place(t_push_swap *ps, t_target target);
 int			ps_push_to_target_at_sorted_place_until_remain(
 				t_push_swap *ps, t_target target, int remain);
