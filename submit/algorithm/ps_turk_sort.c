@@ -21,11 +21,8 @@ int	ps_turk_sort(t_push_swap *ps)
 		return (-1);
 	if (ps_rotate_b_to_desc(ps) == -1)
 		return (-1);
-	while (ps->stack_a->size > 3)
-	{
-		if (ps_pb(ps) == -1)
-			return (-1);
-	}
+	if (ps_push_target_until(ps, PS_TB, 3) == -1)
+		return (-1);
 	if (ps_sort_for_three(ps) == -1)
 		return (-1);
 	if (ps_push_to_a_until_zero(ps) == -1)
