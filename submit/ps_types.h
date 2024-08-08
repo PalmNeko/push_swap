@@ -30,6 +30,12 @@ typedef struct s_push_swap {
 	t_ps_stack	*stack_b;
 }	t_push_swap;
 
+/** target stack */
+typedef enum	e_target {
+	PS_TA,
+	PS_TB,
+}	t_target;
+
 typedef int	(*t_cmd)(t_push_swap *);
 
 #endif
