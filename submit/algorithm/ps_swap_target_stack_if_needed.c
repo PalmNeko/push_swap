@@ -13,7 +13,6 @@
 #include "ps.h"
 #include <stdbool.h>
 
-
 int	ps_swap_target_stack_if_needed(t_push_swap *ps, t_target target)
 {
 	t_ps_stack	*stack;

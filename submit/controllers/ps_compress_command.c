@@ -34,7 +34,8 @@ t_ps_cmdlst	*ps_compress_command(
 	new_cmdlst = ps_new_cmdlst();
 	if (new_cmdlst == NULL)
 		return (NULL);
-	if (ps_replace_commands(cmdlst, new_cmdlst, cmd_pattern, replace_command) == -1)
+	if (ps_replace_commands(
+			cmdlst, new_cmdlst, cmd_pattern, replace_command) == -1)
 		return (ps_destroy_cmdlst(new_cmdlst), NULL);
 	return (new_cmdlst);
 }

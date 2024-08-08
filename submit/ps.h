@@ -41,9 +41,9 @@ t_ps_cmdlst	*ps_compress_command(
 				const char *replace_command);
 t_ps_cmdlst	*ps_compress_commands(
 				t_ps_cmdlst *cmdlst,
-				char		**const *cmd_patterns,
-				char		*const *replace_cmds,
-				int	size);
+				char **const *cmd_patterns,
+				char *const *replace_cmds,
+				int size);
 t_ps_cmdlst	*ps_compress_cmdlst(t_ps_cmdlst *cmdlst);
 
 /** push swap */

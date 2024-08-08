@@ -14,9 +14,9 @@
 
 t_ps_cmdlst	*ps_compress_commands(
 	t_ps_cmdlst *cmdlst,
-	char		**const *cmd_patterns,
-	char		*const *replace_cmds,
-	int	size)
+	char **const *cmd_patterns,
+	char *const *replace_cmds,
+	int size)
 {
 	int			index;
 	t_ps_cmdlst	*new_cmdlst;

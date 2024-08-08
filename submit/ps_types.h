@@ -31,7 +31,7 @@ typedef struct s_push_swap {
 }	t_push_swap;
 
 /** target stack */
-typedef enum	e_target {
+typedef enum e_target {
 	PS_TA,
 	PS_TB,
 }	t_target;

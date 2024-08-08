@@ -20,7 +20,8 @@ t_ps_stack	*ps_clone_stack(t_ps_stack *stack)
 	cloned_stack = ps_new_stack();
 	if (cloned_stack == NULL)
 		return (NULL);
-	cloned_stack->top = ft_lstmap(stack->top, (void *(*)(void *))ft_strdup, free);
+	cloned_stack->top = ft_lstmap(
+			stack->top, (void *(*)(void *))ft_strdup, free);
 	if (stack->top != NULL && cloned_stack->top == NULL)
 		return (ps_destroy_stack(cloned_stack), NULL);
 	ft_lsttocircular(cloned_stack->top);
