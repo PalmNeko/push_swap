@@ -34,6 +34,7 @@ typedef struct s_push_swap {
 typedef enum e_target {
 	PS_TA,
 	PS_TB,
+	PS_TNONE,
 }	t_target;
 
 typedef int	(*t_cmd)(t_push_swap *);
