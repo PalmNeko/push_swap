@@ -17,6 +17,7 @@
 
 int		ps_init_push_swap_sort(const int *values, int size, t_push_swap **ps);
 void	ps_finalize_push_swap_sort(t_push_swap **ps);
+int		ps_solve_push_swap_sort(t_push_swap *ps);
 
 t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 {
@@ -26,16 +27,7 @@ t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 
 	if (ps_init_push_swap_sort(values, size, &ps) == -1)
 		return (NULL);
-	sort_result = 0;
-	if (ps_validate_is_sorted(ps) == false)
-	{
-		if (3 < ps->stack_a->size && ps->stack_a->size <= 5)
-			sort_result = ps_sort_between_3and5(ps);
-		else if (ps->stack_a->size > 100)
-			sort_result = ps_quick_sort(ps);
-		else
-			sort_result = ps_turk_sort(ps);
-	}
+	sort_result = ps_solve_push_swap_sort(ps);
 	if (sort_result == 0)
 	{
 		cmdlst = ps->cmdlst;
@@ -45,6 +37,20 @@ t_ps_cmdlst	*ps_push_swap_sort(int *values, int size)
 		cmdlst = NULL;
 	ps_finalize_push_swap_sort(&ps);
 	return (cmdlst);
+}
+
+int	ps_solve_push_swap_sort(t_push_swap *ps)
+{
+	if (ps_validate_is_sorted(ps) == false)
+	{
+		if (3 < ps->stack_a->size && ps->stack_a->size <= 5)
+			return (ps_sort_between_3and5(ps));
+		else if (ps->stack_a->size > 100)
+			return (ps_quick_sort(ps));
+		else
+			return (ps_turk_sort(ps));
+	}
+	return (0);
 }
 
 int	ps_init_push_swap_sort(const int *values, int size, t_push_swap **ps)
