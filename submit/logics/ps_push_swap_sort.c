@@ -45,10 +45,10 @@ int	ps_solve_push_swap_sort(t_push_swap *ps)
 	{
 		if (3 < ps->stack_a->size && ps->stack_a->size <= 5)
 			return (ps_sort_between_3and5(ps));
-		else if (ps->stack_a->size > 100)
-			return (ps_quick_sort(ps));
-		else
+		else if (ps->stack_a->size <= 100)
 			return (ps_turk_sort(ps));
+		else
+			return (ps_quick_sort(ps));
 	}
 	return (0);
 }
