@@ -12,7 +12,6 @@
 
 #include "ps.h"
 
-int	ps_sort_to_serial_number_only_top_three(t_push_swap *ps, t_target target);
 int	is_swap(t_push_swap *ps);
 int	ps_push_and_rotate(t_push_swap *ps);
 
@@ -39,39 +38,6 @@ int	ps_sort_between_3and5(t_push_swap *ps)
 		return (-1);
 	if (ps_rotate_a_to_asc(ps) == -1)
 		return (-1);
-	return (0);
-}
-
-/**
- *
- * swap(top-medium) pattern:
- * top medium bottom
- * 2 1 3 : 2 > 1 < 3 > 2
- * 1 3 2 : 1 < 3 > 2 > 1
- * 3 2 1 : 3 > 2 > 1 < 3
- * no swap pattern:
- * 1 2 3
- * 3 1 2
- * 2 3 1
- */
-int	ps_sort_to_serial_number_only_top_three(t_push_swap *ps, t_target target)
-{
-	int			first;
-	int			second;
-	int			third;
-	t_ps_stack	*stack;
-
-	stack = ps_get_target_stack(ps, target);
-	first = ps_get_value(ps_get_stack(stack, 0));
-	second = ps_get_value(ps_get_stack(stack, 1));
-	third = ps_get_value(ps_get_stack(stack, 2));
-	if ((first > second && second < third && third > first)
-		|| (first < second && second > third && third > first)
-		|| (first > second && second > third && third < first))
-	{
-		if (ps_swap_target(ps, target) == -1)
-			return (-1);
-	}
 	return (0);
 }
 

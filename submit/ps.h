@@ -100,6 +100,8 @@ t_ps_cmdlst	*ps_compress_rotate(t_ps_cmdlst *cmdlst);
 int			ps_swap_target_stack_if_needed(t_push_swap *ps, t_target target);
 
 /** algorithm */
+int			ps_sort_to_serial_number_only_top_three(
+				t_push_swap *ps, t_target target);
 int			ps_push_target_until(t_push_swap *ps, t_target target, int until);
 t_cmd		ps_get_target_command(t_target target, t_cmd a_cmd, t_cmd b_cmd);
 t_target	ps_get_other_target(t_target target);
