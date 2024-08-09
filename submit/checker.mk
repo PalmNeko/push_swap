@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 17:22:16 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 17:28:08 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ CFLAGS += -g -O0 -fsanitize=leak -Wall -Werror -Wextra -MP -MMD -I. -I./Libft
 all: $(NAME)
 
 clean:
-	$(RM) $(CLEAN_FILES)
+	$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
-	$(RM) $(FCLEAN_FILES)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 17:18:38 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 17:26:36 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,6 @@ SRC = \
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)
 CFLAGS += -Wall -Werror -Wextra -MP -MMD -I. -I./Libft
-CLEAN_FILES = $(OBJS) $(DEPS)
-FCLEAN_FILES = $(NAME)
 
 all: $(NAME) bonus
 
@@ -39,10 +37,12 @@ debug: CFLAGS  += -g -O0 -fsanitize=leak
 debug: all
 
 clean:
-	$(RM) $(CLEAN_FILES)
+	$(RM) $(OBJS) $(DEPS)
+	make -f checker.mk clean
 
 fclean: clean
-	$(RM) $(FCLEAN_FILES)
+	$(RM) $(NAME)
+	make -f checker.mk fclean
 
 re: fclean all
 
