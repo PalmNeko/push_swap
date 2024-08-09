@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 17:13:17 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 17:18:56 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,8 @@ show:
 	@printf "%s\n \t%s\n" "LDFLAGS" "$(LDFLAGS)"
 	@printf "%s\n \t%s\n" "LIBS" "$(LIBS)"
 
+-include $(DEPS)
+
 LIBFT_DIR ?= Libft
 LIBFT = libft.a
 LIBS += $(LIBFT_DIR)/$(LIBFT)
@@ -59,5 +61,3 @@ $(NAME): $(OBJS) $(LIBS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
-
--include $(DEPS)
