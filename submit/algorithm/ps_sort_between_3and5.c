@@ -14,7 +14,7 @@
 
 int	is_swap(t_push_swap *ps);
 int	ps_push_and_rotate(t_push_swap *ps);
-int ps_rotate_stack_a_when_min_values_placed_bottom(t_push_swap *ps);
+int	ps_rotate_stack_a_when_min_values_placed_bottom(t_push_swap *ps);
 int	ps_swap_stack_a_to_take_min_cost(t_push_swap *ps);
 
 int	ps_sort_between_3and5(t_push_swap *ps)
@@ -32,7 +32,7 @@ int	ps_sort_between_3and5(t_push_swap *ps)
 	return (0);
 }
 
-int ps_rotate_stack_a_when_min_values_placed_bottom(t_push_swap *ps)
+int	ps_rotate_stack_a_when_min_values_placed_bottom(t_push_swap *ps)
 {
 	if (ps_at(ps->stack_a, 3) <= 1 && ps_at(ps->stack_a, 4) <= 1)
 	{

@@ -12,7 +12,7 @@
 
 #include "ps.h"
 
-int	(*ps_get_func_get_insert_pos(t_target target))(t_ps_stack *, int)
+t_get_insert_pos_func	ps_get_func_get_insert_pos(t_target target)
 {
 	if (target == PS_TA)
 		return (ps_get_insert_pos_asc);

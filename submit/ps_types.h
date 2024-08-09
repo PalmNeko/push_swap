@@ -38,5 +38,6 @@ typedef enum e_target {
 }	t_target;
 
 typedef int	(*t_cmd)(t_push_swap *);
+typedef int	(*t_get_insert_pos_func)(t_ps_stack *, int);
 
 #endif
