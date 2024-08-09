@@ -21,7 +21,6 @@ int	ps_rotate_target_to_right_order(t_push_swap *ps, t_target target)
 	t_cmd		rrotate_cmd;
 
 	get_insert_pos_func = ps_get_func_get_insert_pos(target);
-		get_insert_pos_func = ps_get_insert_pos_desc;
 	stack = ps_get_target_stack(ps, target);
 	rotate_cnt = get_insert_pos_func(stack, -1);
 	rotate_cmd = ps_get_target_command(target, ps_ra, ps_rb);
