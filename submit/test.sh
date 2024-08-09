@@ -9,9 +9,11 @@ err_exit() {
 
 g_line_cnt=""
 test_push_swap() {
-	CMDS="$(./push_swap "$@")"
-	g_line_cnt="$(echo -n "$CMDS" | wc -l)"
-	RESULT="$(echo -n "$CMDS" | ./"$CHECKER" "$@")"
+	tmpdir="$(mktemp)"
+	./push_swap "$@" > "$tmpdir"
+	g_line_cnt="$(echo -n "$(cat "$tmpdir")" | wc -l)"
+	RESULT="$(cat "$tmpdir" | ./"$CHECKER" "$@")"
+	rm "$tmpdir"
 	local exit_status
 	if [ "$RESULT" = "OK" ]; then
 		printf "\e[32m%b\e[0m" " $RESULT\n"
