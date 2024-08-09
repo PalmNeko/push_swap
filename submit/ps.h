@@ -61,6 +61,7 @@ int			ps_sa(t_push_swap *ps);
 int			ps_sb(t_push_swap *ps);
 int			ps_ss(t_push_swap *ps);
 int			ps_get_target_size(t_push_swap *ps, t_target target);
+int			(*ps_get_func_get_insert_pos(t_target target))(t_ps_stack *, int);
 int			ps_get_value(t_list *lst);
 t_ps_stack	*ps_get_target_stack(t_push_swap *ps, t_target target);
 int			ps_swap_target(t_push_swap *ps, t_target target);
