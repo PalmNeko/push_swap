@@ -26,7 +26,7 @@ CMD_FILE="$(mktemp)"
 ./push_swap $NBR > "$CMD_FILE"
 cat "$CMD_FILE" | count_strings >&2
 NBR_LINK=$( echo "$NBR" | tr ' ' ',' )
-CMD_LINK=$( echo "$CMD" | sed -e"s/rra/g/g" -e"s/rrb/h/g" \
+CMD_LINK=$( cat "$CMD_FILE"  | sed -e"s/rra/g/g" -e"s/rrb/h/g" \
 -e"s/rrr/i/g" -e"s/sa/a/g" -e"s/sb/b/g" -e"s/ss/c/g" \
 -e"s/ra/d/g" -e"s/rb/e/g" -e"s/rr/f/g"  -e"s/pa/j/g" -e"s/pb/k/g" | tr -d '\n')
 CMD_COUNT=${#CMD_LINK}
