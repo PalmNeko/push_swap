@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 17:28:08 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 18:02:28 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,13 @@ SRC = \
 	$(shell find . -type f -name "ps_*.c")
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)
+CACHE_DIR = cache
 CFLAGS += -g -O0 -fsanitize=leak -Wall -Werror -Wextra -MP -MMD -I. -I./Libft
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(DEPS)
+	rm -rf $(CACHE_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -51,8 +52,9 @@ $(LIBFT_DIR)/$(LIBFT): $(LIBFT_DIR)
 $(LIBFT_DIR):
 	git clone https://github.com/PalmNeko/Libft
 
-$(NAME): $(OBJS) $(LIBS)
-	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+$(NAME): $(LIBS) $(addprefix $(CACHE_DIR)/,$(OBJS))
+	$(CC) $(LDFLAGS) -o $@ $(filter %.o,$*) $(LDLIBS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(CACHE_DIR)/%.o: %.c
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -MF $(CACHE_DIR)/$(<:.c=.d) -o $@ -c $<
