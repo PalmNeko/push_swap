@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 17:13:20 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 17:17:54 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,18 +72,7 @@ $(NAME): $(LIBS) $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-checker_clean:
-	make -f checker.mk clean
-
-checker_fclean:
-	make -f checker.mk fclean
-
-checker: bonus
-
 push_swap_tester:
 	git clone https://github.com/nafuka11/push_swap_tester.git
-
-clean:  checker_clean
-fclean: checker_clean
 
 -include $(DEPS)
