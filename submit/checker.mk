@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 18:04:03 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 18:20:17 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,14 +44,14 @@ show:
 	@printf "%s\n \t%s\n" "LDFLAGS" "$(LDFLAGS)"
 	@printf "%s\n \t%s\n" "LIBS" "$(LIBS)"
 
--include $(DEPS)
+-include $(addprefix $(CACHE_DIR)/,$(DEPS))
 
 $(NAME): $(LIBS) $(addprefix $(CACHE_DIR)/,$(OBJS))
-	$(CC) $(LDFLAGS) -o $@ $(filter %.o,$*) $(LDLIBS)
+	$(CC) $(LDFLAGS) -o $@ $(filter %.o,$^) $(LDLIBS)
 
 $(CACHE_DIR)/%.o: %.c
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -MF $(CACHE_DIR)/$(<:.c=.d) -o $@ -c $<
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -MF $(CACHE_DIR)/$*.d -o $@ -c $<
 
 $(LIBFT_DIR)/$(LIBFT): $(LIBFT_DIR)
 	make -C "$(LIBFT_DIR)"
