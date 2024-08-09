@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 17:11:18 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 17:13:17 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,21 @@ CFLAGS += -g -O0 -fsanitize=leak -Wall -Werror -Wextra -MP -MMD -I. -I./Libft
 
 all: $(NAME)
 
-include fony.mk
+clean:
+	$(RM) $(CLEAN_FILES)
+
+fclean: clean
+	$(RM) $(FCLEAN_FILES)
+
+re: fclean all
+
+show:
+	@printf "%s\n \t%s\n" "SRC" "$(SRC)"
+	@printf "%s\n \t%s\n" "OBJS" "$(OBJS)"
+	@printf "%s\n \t%s\n" "DEPS" "$(DEPS)"
+	@printf "%s\n \t%s\n" "CFLAGS" "$(CFLAGS)"
+	@printf "%s\n \t%s\n" "LDFLAGS" "$(LDFLAGS)"
+	@printf "%s\n \t%s\n" "LIBS" "$(LIBS)"
 
 LIBFT_DIR ?= Libft
 LIBFT = libft.a
