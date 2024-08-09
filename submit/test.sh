@@ -40,7 +40,7 @@ main () {
 
 	printf "2 or 3 line (2 1 0)"
 	test_push_swap 2 1 0
-	test "$g_line_cnt" -le 3 || err_exit "over"
+	test "$g_line_cnt" -eq 3 || "$g_line_cnt" -eq 2 || err_exit "over"
 
 	printf "instruction count should be less than 13 (1 5 2 4 3)"
 	test_push_swap 1 5 2 4 3
