@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 18:21:54 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 18:23:59 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,8 +96,7 @@ LDFLAGS += -L $(LIBFT_DIR)
 
 all: $(NAME) bonus
 
-bonus:
-	# $(MAKE) -f checker.mk
+bonus: checker
 
 test: clean debug push_swap_tester checker norm
 	@echo "brief test" && ./test.sh
@@ -143,6 +142,9 @@ $(LIBFT_DIR)/$(LIBFT): $(LIBFT_DIR)
 
 $(LIBFT_DIR):
 	git clone https://github.com/PalmNeko/Libft
+
+checker:
+	$(MAKE) -f checker.mk
 
 push_swap_tester:
 	git clone https://github.com/nafuka11/push_swap_tester.git
