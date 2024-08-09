@@ -24,7 +24,7 @@ int	ps_swap_target_stack_if_needed(t_push_swap *ps, t_target target)
 		|| (target == PS_TB && ps_at(stack, 0) < ps_at(stack, 1)))
 	{
 		if (ps_swap_target(ps, target) == -1)
-			return (0);
+			return (-1);
 	}
 	return (0);
 }
