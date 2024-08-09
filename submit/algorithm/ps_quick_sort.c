@@ -27,7 +27,7 @@ int	ps_quick_sort(t_push_swap *ps)
 		return (-1);
 	if (ps_push_to_a_until(ps, SPLIT_CNT, 0) == -1)
 		return (-1);
-	if (ps_rotate_a_to_asc(ps) == -1)
+	if (ps_rotate_target_to_right_order(ps, PS_TA) == -1)
 		return (-1);
 	return (0);
 }
