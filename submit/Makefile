@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/06 18:11:01 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/09 17:03:25 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,11 @@ CC = cc
 SRC = \
 	./main.c \
 	$(shell find . -type f -name "ps_*.c")
-
-
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)
 CFLAGS += -Wall -Werror -Wextra -MP -MMD -I. -I./Libft
 CLEAN_FILES = $(OBJS) $(DEPS)
 FCLEAN_FILES = $(NAME)
-# extern variables - defined and appended from libs
-#   LIBS    : need libraries ex: Libft/libft.a
-#   LDFLAGS : ld flags ex: -L Libft
-#   LDLIBS  : load lib flags ex: -l ft
 
 all: $(NAME) bonus
 
@@ -45,7 +39,18 @@ debug: CFLAGS  += -g -O0 -fsanitize=leak
 debug: all
 
 include fony.mk
-include libs.mk
+
+LIBFT_DIR ?= Libft
+LIBFT = libft.a
+LIBS += $(LIBFT_DIR)/$(LIBFT)
+LDLIBS += -l ft
+LDFLAGS += -L $(LIBFT_DIR)
+
+$(LIBFT_DIR)/$(LIBFT): $(LIBFT_DIR)
+	make -C "$(LIBFT_DIR)"
+
+$(LIBFT_DIR):
+	git clone https://github.com/PalmNeko/Libft
 
 $(NAME): $(LIBS) $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
