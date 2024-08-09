@@ -75,7 +75,6 @@ bool		ps_validate_is_sorted(t_push_swap *ps);
 /** calculator */
 int			ps_renumber(int *values, int size);
 int			*ps_str_to_int_array(const char *strs[], int size);
-int			ps_sort_for_three(t_push_swap *ps);
 int			ps_get_insert_pos_desc(t_ps_stack *stack, int value);
 int			ps_get_insert_pos_asc(t_ps_stack *stack, int value);
 int			ps_get_min_value(t_ps_stack *stack);
@@ -87,9 +86,6 @@ int			ps_calc_rotate_cost(int rotate_a, int rotate_b);
 int			ps_run_to_times(t_push_swap *ps, int (*f)(t_push_swap *), int cnt);
 int			ps_rotate_two_stack(t_push_swap *ps, int rotate_a, int rotate_b);
 int			ps_rotate_two_way(t_push_swap *ps, t_cmd fr, t_cmd frr, int cnt);
-int			ps_rotate_a_to_asc(t_push_swap *ps);
-int			ps_push_to_a_until_zero(t_push_swap *ps);
-int			ps_rotate_b_to_desc(t_push_swap *ps);
 int			ps_push_to_a_until(t_push_swap *ps, int split_cnt, int until);
 int			ps_push_to_b_until(t_push_swap *ps, int until);
 t_ps_cmdlst	*ps_main(int argc, const char *argv[]);
