@@ -46,6 +46,24 @@ main () {
 	test_push_swap 1 5 2 4 3
 	test "$g_line_cnt" -lt 13 || err_exit "over"
 
+	printf "error test (\"\")"
+	./push_swap "" 2>&1 | grep -q "^Error$" || err_exit "should occour error" && printf "\e[32m%b\e[0m" " OK\n"
+
+	printf "error test. duplicate (1 1 3)"
+	./push_swap 1 1 3 2>&1 | grep -q "^Error$" || err_exit "should occour error" && printf "\e[32m%b\e[0m" " OK\n"
+
+	printf "error test. duplicate (3 1 1)"
+	./push_swap 3 1 1 2>&1 | grep -q "^Error$" || err_exit "should occour error" && printf "\e[32m%b\e[0m" " OK\n"
+
+	printf "error test. (2147483647 2147483648)"
+	./push_swap 2147483647 2147483648 2>&1 | grep -q "^Error$" || err_exit "should occour error" && printf "\e[32m%b\e[0m" " OK\n"
+
+	printf "error test. (2147483647 -2147483649)"
+	./push_swap 2147483647 -2147483649 2>&1 | grep -q "^Error$" || err_exit "should occour error" && printf "\e[32m%b\e[0m" " OK\n"
+
+	printf "no_error. (2147483647 -2147483648)"
+	test_push_swap 2147483647 -2147483648
+
 	return 0
 }
 
