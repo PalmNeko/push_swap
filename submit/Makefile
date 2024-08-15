@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/09 18:23:59 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/15 12:55:48 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,7 +141,9 @@ $(LIBFT_DIR)/$(LIBFT): $(LIBFT_DIR)
 	make -C "$(LIBFT_DIR)"
 
 $(LIBFT_DIR):
-	git clone https://github.com/PalmNeko/Libft
+	git clone https://github.com/PalmNeko/Libft tmp
+	cp -r tmp/submit $(LIBFT_DIR)
+	rm -rf tmp
 
 checker:
 	$(MAKE) -f checker.mk
