@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/25 23:41:56 by marvin            #+#    #+#              #
-#    Updated: 2024/08/15 12:55:48 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/08/18 15:40:58 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,8 @@ LDFLAGS += -L $(LIBFT_DIR)
 
 all: $(NAME) bonus
 
-bonus: checker
+bonus:
+	$(MAKE) -f checker.mk
 
 test: clean debug push_swap_tester checker norm
 	@echo "brief test" && ./test.sh
@@ -128,6 +129,8 @@ show:
 	@printf "%s\n \t%s\n" "LDFLAGS" "$(LDFLAGS)"
 	@printf "%s\n \t%s\n" "LIBS" "$(LIBS)"
 
+.PHONY: all bonus test norm debug clean fclean re show
+
 -include $(addprefix $(CACHE_DIR)/,$(DEPS))
 
 $(NAME): $(LIBS) $(addprefix $(CACHE_DIR)/,$(OBJS))
@@ -144,9 +147,6 @@ $(LIBFT_DIR):
 	git clone https://github.com/PalmNeko/Libft tmp
 	cp -r tmp/submit $(LIBFT_DIR)
 	rm -rf tmp
-
-checker:
-	$(MAKE) -f checker.mk
 
 push_swap_tester:
 	git clone https://github.com/nafuka11/push_swap_tester.git
