@@ -18,9 +18,12 @@ test_push_swap() {
 	if [ "$RESULT" = "OK" ]; then
 		printf "\e[32m%b\e[0m" " $RESULT\n"
 		exit_status="0"
-	else
+	elif [ "$RESULT" = "KO" ]; then
 		printf "\e[31m%b\e[0m" " $RESULT\n"
 		exit_status="1"
+	else
+		printf "\e[31m%b\e[0m" " Error: checker output format (OK/KO) : $RESULT"
+		exit 1
 	fi
 	test "$RESULT" = "OK" && return 0 || return 1
 }
@@ -64,6 +67,8 @@ main () {
 	printf "no_error. (2147483647 -2147483648)"
 	test_push_swap 2147483647 -2147483648
 
+	printf "bonus: checker KO format"
+	echo -n "" | ./"$CHECKER" 2 1 0 | cat -e | grep -E '^KO\$$' > /dev/null || err_exit "should print KO" && printf "\e[32m%b\e[0m" " OK\n"
 	return 0
 }
 

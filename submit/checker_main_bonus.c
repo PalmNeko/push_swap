@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:43:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/07 18:26:27 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:33:23 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, const char *argv[])
 	}
 	else
 	{
-		ft_putstr_fd("NG\n", 1);
+		ft_putstr_fd("KO\n", 1);
 		return (1);
 	}
 	return (0);
