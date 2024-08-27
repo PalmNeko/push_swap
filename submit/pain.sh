@@ -36,4 +36,4 @@ rm "$CMD_FILE"
 # RESULT=$( echo $CMD | ./checker $NBR 2>&1 ) # not work but i don't know why.<= on windows.
 echo "Operations: $CMD_COUNT" >&2
 echo "Result $RESULT" >&2
-echo "https://patrick-hacks.github.io/push-swap-pain/?&nbr=$NBR_LINK&cmd=$CMD_LINK"
+echo "https://bluegales.github.io/push-swap-pain/?&nbr=$NBR_LINK&cmd=$CMD_LINK"
