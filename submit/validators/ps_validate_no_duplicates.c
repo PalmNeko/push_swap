@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 00:02:37 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/08/15 12:48:59 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/08/27 11:01:56 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ bool	ps_validate_no_duplicates(int *values, size_t len)
 		return (false);
 	ft_memcpy(copy_values, values, sizeof(int) * len);
 	ft_selection_sort(copy_values, len, sizeof(int), cmp_int_asc);
-	if (errno == ENOMEM)
-		return (false);
 	pre_value = copy_values[0];
 	index = 1;
 	while (index < len)
